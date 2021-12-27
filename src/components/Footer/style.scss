@@ -1,0 +1,40 @@
+@use "src/styles/vars" as v;
+
+.footer {
+  bottom: 0;
+  left: 0%;
+  right: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__nav {
+    margin: 0.5rem;
+  }
+
+  &__ul {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2px;
+  }
+
+  &__li {
+    margin-top: 0.5rem;
+    font-weight: bold;
+    padding: 0.7rem;
+    margin: 0.25rem;
+    border-radius: 0.5rem;
+    background-color: v.$color-in-body;
+    border: v.$color-border solid 0.11em;
+  }
+
+  &__li:focus:active:hover {
+    background-color: v.$color-border;
+    border: white solid 2px;
+  }
+
+  &__li:hover {
+    background-color: v.$color-border;
+    border: white solid 2px;
+  }
+}

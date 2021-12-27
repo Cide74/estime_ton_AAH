@@ -1,0 +1,48 @@
+@use "src/styles/vars" as v;
+
+.Calculator {
+  width: 100%;
+  height: 80vh;
+  margin: 0 auto;
+  padding-top: 3rem;
+
+  border-radius: 20px;
+  &__base {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(214, 202, 202, 0.05);
+    background: radial-gradient(
+      at center,
+      rgba(73, 71, 71, 0.05),
+      v.$color-body
+    );
+
+    &__Section {
+      margin: 20px 50px;
+      text-align: left;
+    }
+  }
+  &__result {
+    position: relative;
+    padding: 2rem;
+  }
+  &__bloc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem 0;
+  }
+}
+
+h2 {
+  margin: 10px;
+  font-size: 2em;
+  font-weight: large;
+}
+
+p strong {
+  font-size: 2em;
+}

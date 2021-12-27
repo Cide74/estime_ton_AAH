@@ -1,0 +1,92 @@
+###
+### / =>ok
+GET http://localhost:3000/
+
+
+### Serveur Back-end => Voici la liste de tous les articles
+GET https://projet-estime-ton-aah-back.herokuapp.com/articles
+
+
+########
+# SMIC #
+########
+
+# Toutes les infos :
+# https://github.com/openfisca/openfisca-france/tree/76.1.0/openfisca_france/parameters/marche_travail/salaire_minimum
+
+### SMIC horaire brut
+GET https://fr.openfisca.org/api/latest/parameter/marche_travail.salaire_minimum.smic_h_b
+
+### Nombre d'heures travaillees forfaitaires
+GET https://fr.openfisca.org/api/latest/parameter/marche_travail.salaire_minimum.nb_heure_travail_mensuel
+
+
+
+
+###############################
+# Allocation Adulte Handicapé #
+###############################
+
+# Toute les infos :
+# https://github.com/openfisca/openfisca-france/tree/76.1.0/openfisca_france/parameters/prestations/minima_sociaux/aah
+
+### Montant mensuel de l'allocation adulte handicapé
+GET https://fr.openfisca.org/api/latest/parameter/prestations.minima_sociaux.aah.montant
+
+### Majoration de plafond pour personne à charge (en pourcentage du plafond de base)
+GET https://fr.openfisca.org/api/latest/parameter/prestations.minima_sociaux.aah.majoration_plafond_personne_a_charge
+
+### Âge légal de départ à la retraite
+GET https://fr.openfisca.org/api/latest/parameter/prestations.minima_sociaux.aah.age_legal_retraite 
+
+### Âge minimal pour bénéficier de l'AAH
+GET https://fr.openfisca.org/api/latest/parameter/prestations.minima_sociaux.aah.age_minimal
+
+### Majoration du plafond de l'AAH pour un couple (en pourcentage du plafond de base)
+GET https://fr.openfisca.org/api/latest/parameter/prestations.minima_sociaux.aah.majoration_plafond_couple
+
+### Taux d'incapacité minimum pour bénéficier de l'AAH
+GET https://fr.openfisca.org/api/latest/parameter/prestations.minima_sociaux.aah.taux_incapacite
+
+
+
+
+##########################################
+# Allocation supplémentaire d'invalidité #
+##########################################
+
+# Toute les infos :
+# https://github.com/openfisca/openfisca-france/tree/76.1.0/openfisca_france/parameters/prestations/minima_sociaux/asi
+
+
+### Montant annuel maximal de l'ASI pour un couple
+GET https://fr.openfisca.org/api/latest/parameter/prestations.minima_sociaux.asi.montant_couple
+
+### Montant annuel maximal de l'ASI pour une personne seule
+GET https://fr.openfisca.org/api/latest/parameter/prestations.minima_sociaux.asi.montant_seul
+
+### Plafond de ressources (allocation comprise) pour un couple pour avoir droit à l'ASI
+GET https://fr.openfisca.org/api/latest/parameter/prestations.minima_sociaux.asi.plafond_ressource_couple
+
+### Plafond de ressources (allocation comprise) pour une personne seule pour avoir droit à l'ASI
+GET https://fr.openfisca.org/api/latest/parameter/prestations.minima_sociaux.asi.plafond_ressource_seul
+
+### Taux minimum d'invalidite
+GET https://fr.openfisca.org/api/latest/parameter/prestations.minima_sociaux.asi.taux_minimum_d_invalidite
+
+
+###########################################################
+# Complément de l'allocation pour adulte handicapé (CAAH) #
+###########################################################
+
+# Toute les infos :
+# https://github.com/openfisca/openfisca-france/tree/76.1.0/openfisca_france/parameters/prestations/minima_sociaux/caah
+
+### Garantie de ressources pour les personnes handicapées (complément ressources + aah)
+get https://fr.openfisca.org/api/latest/parameter/prestations.minima_sociaux.caah.garantie_ressources
+
+### Majoration pour la vie autonome
+GET https://fr.openfisca.org/api/latest/parameter/prestations.minima_sociaux.caah.majoration_vie_autonome
+
+### Montant mensuel du complément de ressources aux adultes handicapés (à partir de 2007)
+GET https://fr.openfisca.org/api/latest/parameter/prestations.minima_sociaux.caah.montant_complement_ressources

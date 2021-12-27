@@ -1,0 +1,49 @@
+
+@use "src/styles/vars" as v;
+
+.card {
+
+  &__comment {
+
+    border-radius: 2em;
+    margin-left: 1rem;
+    padding: 0.8rem;
+    text-align: left;
+    font-size: 0.9rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    border: solid 2px #f79884;
+    box-sizing: border-box;
+    flex: 1;
+
+    &__footer {
+      text-align: right;
+      font-size: 0.6rem;
+      position: relative;
+      top: 10px; 
+    }
+
+    &__triangle__out {
+      margin-left:2.5rem;
+      width: 18px;
+      height: 00px;
+      border-style: solid;
+      border-width: 0px 15px 20px;
+      border-color: transparent transparent #f79884 transparent;
+      position: relative;
+      top: 0px; 
+    }
+
+    &__triangle__in {
+      width: 18px;
+      height: 25px;
+      border-style: solid;
+      border-width: 0px 15px 20px;
+      border-color: transparent transparent #ffffff transparent;
+      position: relative;
+      top: -2px; 
+      left: -15px; 
+    }
+  }
+}
+

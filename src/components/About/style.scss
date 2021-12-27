@@ -1,0 +1,28 @@
+.About {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+
+  &__title2 {
+    text-align: left;
+    font-size: 1.3rem;
+    margin: 1rem;
+  }
+
+  &__para {
+    text-align: justify;
+    margin: 0.5rem 1rem ;
+    line-height: normal;
+    text-indent: 2rem;
+  }
+
+  &__para:last-child {
+    margin-bottom: 7%;
+  }
+  
+  &__link {
+    margin: 0.5rem;
+    color: blue;
+    text-align: left;
+  }
+}

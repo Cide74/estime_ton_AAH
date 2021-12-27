@@ -1,0 +1,143 @@
+@use "src/styles/vars" as v;
+
+.paragraphe {
+  background-color: v.$color-in-body;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: solid 2px v.$color-border;
+  display: flex;
+  flex-direction: column;
+
+  &__border {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    flex: 1;
+
+    border: solid 2px v.$color-body;
+  }
+
+  &__title {
+    border-color: v.$color-border solid 1rem;
+    background-color: white;
+    border-radius: 1rem;
+    text-decoration: none;
+  }
+
+  &__card {
+    padding: 0.25rem;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 0.8rem;
+    background-color: white;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.card {
+  margin: 0.5rem;
+  background-color: #fabab0;
+  border-radius: 1rem;
+  justify-content: space-around;
+  max-width: 220px;
+  border: solid 2px #f79884;
+  border-radius: 0.8rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  max-width: 240px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &__men {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__img {
+    max-width: 220px;
+    max-height: 220px;
+    border-radius: 1rem 1rem 0rem 0rem;
+    border: solid 2px #f79884;
+  }
+
+  &__paragraphe {
+    text-align: left;
+    font-size: 1em;
+    background-color: white;
+    padding: 0rem 0rem 0rem 0.5rem;
+    background-color: white;
+    border-radius: 0rem 0rem 1rem 1rem;
+    max-width: 220px;
+    border: solid 2px #f79884;
+    min-height: 45%;
+    box-sizing: border-box;
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  &__liste {
+    font-display: none;
+    height: 100%;
+    margin: 0.5em;
+  }
+
+  &__title-sous-liste {
+    margin-top: 0.5em;
+  }
+  &__title2-sous-liste {
+    margin-top: 0.25rem;
+  }
+
+  &__sous-liste {
+    margin-left: 1.5em;
+  }
+
+  &__contact {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__ico {
+    max-width: 50px;
+    max-height: 50px;
+    margin-top: 1rem;
+    border: solid 2px #f79884;
+    border-radius: 2rem;
+  }
+
+  &__ico:hover {
+    -webkit-transform: scale(1.35); /* Safari et Chrome */
+    -moz-transform: scale(1.35); /* Firefox */
+    -ms-transform: scale(1.35); /* Internet Explorer 9 */
+    -o-transform: scale(1.35); /* Opera */
+    transform: scale(1.35);
+  }
+}
+
+.smartr{
+    width: 50px;
+    height: 50px;
+    margin-top: 1rem;
+    border: solid 2px #f79884;
+    border-radius: 2rem;
+    color: white;
+    font-size: 2.5em;
+    background-color: #088475;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.smartr:hover {
+    -webkit-transform: scale(1.35); /* Safari et Chrome */
+    -moz-transform: scale(1.35); /* Firefox */
+    -ms-transform: scale(1.35); /* Internet Explorer 9 */
+    -o-transform: scale(1.35); /* Opera */
+    transform: scale(1.35);
+  }

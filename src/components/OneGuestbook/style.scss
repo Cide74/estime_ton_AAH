@@ -1,0 +1,43 @@
+@use "src/styles/vars" as v;
+
+.Card {
+  width: 80%;
+  padding: 1rem;
+  margin: auto auto;
+  background: v.$color-in-body;
+  border: 3px solid black;
+  border-radius: 15px;
+  &__title {
+    color: white;
+    text-shadow: 1px 2px 2px black, 0 2px 1rem papayawhip;
+  }
+  &__author {
+    float: right;
+    position: relative;
+  }
+  &__btn {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.confirm {
+  width: 300px;
+  height: 150px;
+  background-color: #fff;
+  border: 2px solid black;
+  border-radius: 15px;
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  left: 50%;
+  right: 50%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn {
+  text-align: center;
+}

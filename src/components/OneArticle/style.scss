@@ -1,0 +1,29 @@
+@use "src/styles/vars" as v;
+
+.Card {
+  width: 80%;
+  padding: 1rem;
+  margin: auto auto;
+  background: v.$color-in-body;
+  border: 3px solid black;
+  border-radius: 15px;
+  &__title {
+    color: white;
+    text-shadow: 1px 2px 2px black, 0 2px 1rem papayawhip;
+  }
+  &__content {
+    margin: 1rem;
+  }
+  &__date {
+    float: left;
+  }
+  &__author {
+    float: right;
+    position: relative;
+  }
+  &__btn {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+}

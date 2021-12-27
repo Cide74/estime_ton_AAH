@@ -1,0 +1,14 @@
+@use "src/styles/vars" as v;
+
+#text404 {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+
+  &__image404 {
+    max-width: 50vh;
+    border-radius: 1em ;
+    margin: auto;
+    border: solid 2px v.$color-body;
+  }
+}

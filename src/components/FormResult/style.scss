@@ -1,0 +1,102 @@
+@use "src/styles/vars" as v;
+
+.formResult{
+
+  margin: 1rem;
+  padding: 0.75rem;
+  border: solid 1px #e47967;
+  justify-content: center;
+  // align-items: center;
+  //padding: 2rem 5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  border: solid 2px #e47967;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  &__title{
+    font-size: 1.5em;
+  }
+
+  &__warning{
+    color:red;
+    text-align: justify;
+    text-shadow: 1px 1px 1px black;
+  }
+
+  &__button{
+    border-radius: v.$global-border-radius/2;
+    font-size:1.1em;
+    font-weight: 500;
+    padding: v.$gutter/4;
+    margin: 0.5;
+   // background-color: v.$color-in-body;
+   // border: #E47967 solid 2px;
+  
+  }
+
+  &__card{
+    margin: 0.5rem;
+    background-color: #fabab0;
+    border-radius: 0.5rem;
+    justify-content: space-around;
+    border: solid 2px #f79884;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    overflow: hidden;
+    display: block;
+    flex-direction: column;
+    width: 100%;
+
+    &__title{
+      border-radius: 0.5rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      font-size: 1.1em;
+      text-align: left;
+      margin: 0.25rem;
+      padding: 0.25rem;
+      text-shadow: 1px 1px 2px white;
+    }
+
+    &__title1{
+      border-radius: 0.5rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      font-size: 1.5em;
+      text-align: center;
+      margin: 0.25rem;
+      padding: 0.25rem;
+      text-shadow: 1px 1px 2px white;
+    }
+
+    &__para{
+      background-color: white;
+      border-radius: 0.5rem;
+      border: solid 2px #e47967;
+      padding: 0.5rem;
+      text-align: justify;
+      line-height: normal;
+    }
+
+    &__list{
+      padding: 0.25rem;
+      text-align: justify;
+      line-height: normal;
+    }
+
+  }
+
+}
+
+.p{
+  
+}
+
+

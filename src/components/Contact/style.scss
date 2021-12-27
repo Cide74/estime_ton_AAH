@@ -1,0 +1,48 @@
+
+@use "src/styles/vars" as v;
+
+.contact {
+
+  &__form {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+
+    &__in{
+      background-color: white;
+      margin-Top: 1rem;
+      padding: 0.5rem 2rem;
+      border-radius: 0.5rem;
+      border: solid 2px #f79884;
+      width: 90%;
+
+      &__response {
+        flex-direction: row;
+        background-color: v.$color-in-body;
+        border: solid 1px #e47967;
+        margin:0.5rem;
+        border-radius: 0.5rem;
+        padding: 0.250rem;
+      }
+
+      &__comment {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+      }
+
+      &__area {
+        padding: 1rem;
+        border: solid 2px #e47967;
+        margin:0.5rem;
+        border-radius: 0.5rem;
+      }
+    }
+  }
+
+  &__label {
+    padding: 1rem;
+    float: left;
+  }
+}

@@ -1,0 +1,29 @@
+@use "src/styles/vars" as v;
+
+.header {
+  display: flex;
+	flex-direction: column;
+
+  &__div {
+    display: flex;
+    background-color:  v.$color-body;
+    border: solid 2px v.$color-body;
+
+    &__title {
+      font-size: 3em;
+      text-align: center;
+      width: 100%;
+      text-shadow: rgb(0, 0, 0) 0px 01px 20px;
+      color: white;
+    }
+  }
+
+  &__button{
+    border-radius: v.$global-border-radius/2 ;
+    font-size: 0.8rem;
+    padding: v.$gutter;
+    text-align: center;
+    margin: auto ;
+    background-color: v.$color-body;
+  }
+}
