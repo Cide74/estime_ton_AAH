@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Proptypes from "prop-types";
+import Logo from "src/assets/logo.png";
+import Navbar from "src/containers/Navbar";
 
 import "./style.scss";
 
@@ -20,11 +22,12 @@ const Header = ({ pseudo, pseudoWelcome, isLogged, onLogout }) => {
   }
 
   const handleOnLogout = () => {
-    // console.log("Je me déconnecte");
+    console.log("Je me déconnecte");
     setIdentity("");
     setMessage("");
     setIAmLog(false);
     localStorage.clear();
+
     onLogout();
   };
 
@@ -34,62 +37,46 @@ const Header = ({ pseudo, pseudoWelcome, isLogged, onLogout }) => {
   };
 
   useEffect(() => {
-    if (isLogged || localStorage.pseudo !== "") {
+    if (isLogged) {
       setIdentity(pseudo);
       setMessage(pseudoWelcome);
       setIAmLog(true);
+      console.log("useEffect Header Dans le if (identity)=>", identity);
     }
-  }, [handleOnLogout, identity, isLogged]);
-  // console.log(localStorage.message);
+  }, [isLogged, identity]);
+
   return (
-    <div className="header">
+    <div id="header">
       <Link to="/">
-
-        <div className="header__div">
-          {/**    <img
-
-        <div className="header__div">
-          {/** <img
-
+        <div id="header__div">
+      {/**    <img
             src={Logo}
             alt="Icone pour le retour à l'accueil"
-
             id="header__div__logo"
           />
  */}
-          <h1 className="header__div__title">Estime ton AAH</h1>
+          <h1 id="header__div__title">Estime ton AAH</h1>
 
-
-
-          {/** 
-          {localStorage.pseudo !== "" ? (
-
-      {!isLogged ? (
-
+   {/**     {!isLogged ? (
             <div id="header__hello">
-
-            <div className="header__hello">
-
-              {getTheMoment()}, {message || localStorage.message}
-              <button type="button" onClick={handleOnLogout}>
-                Déconnexion
-              </button>
-            </div>
-          ) : (
-            <div className="header__hello">
               {getTheMoment()}
               <button type="button" onClick={handleLogin}>
                 Connexion
               </button>
             </div>
-
-          )}   */} 
-          </div>
-     </Link>
-
-      {/**  <Navbar />*/}
+          ) : (
+            <div id="header__hello">
+              {getTheMoment()}, {message}
+              <button type="button" onClick={handleOnLogout}>
+                Déconnexion
+              </button>
+            </div>
+          )}  */}  
+        </div>
+      </Link>
+     {/**  <Navbar />*/}
     </div>
-          );
+  );
 };
 
 Header.proptypes = {

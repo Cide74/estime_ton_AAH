@@ -1,8 +1,7 @@
 @use "src/styles/vars" as v;
 
-.header {
-  display: flex;
-	flex-direction: column;
+#header {
+  flex: 1;
 
   &__div {
     display: flex;
@@ -10,12 +9,15 @@
     border: solid 2px v.$color-body;
 
     &__title {
-      font-size: 3em;
+      font-size: 4em;
+      padding:  v.$gutter/2 ;
       text-align: center;
+      margin: auto; 
       width: 100%;
       text-shadow: rgb(0, 0, 0) 0px 01px 20px;
       color: white;
     }
+
   }
 
   &__button{
@@ -26,4 +28,5 @@
     margin: auto ;
     background-color: v.$color-body;
   }
+
 }

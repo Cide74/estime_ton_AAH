@@ -1,40 +1,31 @@
-@use "src/styles/vars" as v;
-
 .footer {
+  //position: fixed;
+  position: bottom;
   bottom: 0;
   left: 0%;
-  right: 0%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  //flex: 1;
+  
   &__nav {
-    margin: 0.5rem;
+    
+    margin: 2rem;
   }
 
   &__ul {
-    display: flex;
-    flex-direction: row;
+  //  display: flex;
+  //  flex-direction: column;
     margin-bottom: 2px;
   }
-
   &__li {
-    margin-top: 0.5rem;
-    font-weight: bold;
-    padding: 0.7rem;
-    margin: 0.25rem;
-    border-radius: 0.5rem;
-    background-color: v.$color-in-body;
-    border: v.$color-border solid 0.11em;
+    padding: 1rem;
   }
-
-  &__li:focus:active:hover {
-    background-color: v.$color-border;
-    border: white solid 2px;
-  }
-
   &__li:hover {
-    background-color: v.$color-border;
-    border: white solid 2px;
+    background: #000;
+    color: #fff;
+    border-radius: 5px;
   }
+  &__li:active {
+    position: relative;
+    top: 1px;
+  }
+
 }

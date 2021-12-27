@@ -3,109 +3,42 @@ import { Link } from "react-router-dom";
 
 import "./style.scss";
 
-const Formulaire = ({ pseudo, isLogged }) => {
+const Formulaire = () => {
   const date = new Date().getFullYear();
 
-  console.log(`pseudo du formulaire`, pseudo)
-  console.log(`isLogged  du formulaire`, isLogged)
-
-
-  const handleOnLogin = () => {
-    login.push("/login");
-  };
-
   return (
-    <div className="home__body">
-      <div className="home__body__title">
-        <h2 className="paragraphe__title">
-          Formulaire
-        </h2>
-          <div className="Preformulaire__wrapper">
-            <p className="Preformulaire__paragraphe">
-              Pour le calcul de l'AAH, il va nous falloir certaines informations.
-              Vous allez devoir remplir un formulaire. Celui-ci prendra
-              approximativement 5 minutes de votre temps. Le calcul se fera sur
-              l'année en cours N-2. Nous sommes en {date}, donc munissez-vous de
-              tous les bulletins de salaire de {date - 2}.
-            </p>
-            <div className="cardChiffre">
-              <h3 className="cardChiffre__title">
-                Pour gagner du temps,
-              </h3>
-              <h3 className="cardChiffre__title">
-                Veuillez préparer ces documents :
-              </h3>
-              <div className="cardChiffre__paragraphe">
-                <ul className="cardChiffre__liste">
-                  <li className="Preformulaire__liste">
-                    - Votre bulletin de salaire {date - 2}.
-                  </li>
-                  <li className="Preformulaire__liste">
-                    - Le bulletin de salaire de votre conjoint(e) de {date - 2}.
-                  </li>
-                  <li className="Preformulaire__liste">
-                    - Le bulletin de salaire {date - 2} de votre (vos) enfant(s) ou des
-                    personnes à votre charge.
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="cardChiffre">
-              <h3 className="cardChiffre__title">
-                Le formulaire sera en quatre parties :
-              </h3>
-              <div className="cardChiffre__paragraphe">
-                <ul className="cardChiffre__liste">
-                  <li className="Preformulaire__liste">
-                    - Les questions sur votre foyer.
-                  </li>
-                  <li className="Preformulaire__liste">
-                    - Celle vous concernant.
-                  </li>
-                  <li className="Preformulaire__liste">
-                    - Celle de votre conjoint(e).
-                  </li>
-                  <li className="Preformulaire__liste">
-                    - Celle de votre (vos) enfant(s) et ou des personnes à charge.
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <p className="Preformulaire__paragraphe">
-              Concernant les informations que vous allez nous fournir, elles seront
-              stockées sur une base de données privé. Elles pourront être supprimées par vous ou sur
-              demande de votre part via{" "}
-              <Link to="/contact" className="Preformulaire__link">
-                le formulaire de contact.
-              </Link>
-            </p>
-
-            { isLogged === false ? (
-              
-              <Link to="/login">
-                <button >
-                  <div onClick={handleOnLogin}>
-
-                    Connectez-vous, pour faire une simulation.
-                  </div>
-                </button> 
-              </Link>
-            ) :(
-              <Link to="/form-questions">
-                <button>
-                  Départ du formulaire
-                </button>
-              </Link>
-            )}
-            <h2 className="formResult__warning">
-              - Attention ! Ceci n'est qu'une estimation, basée sur les informations que vous allez entré dans le questionnaire et n'ouvre aucun droit et n'a aucune valeur juridique.
-            </h2>
-          </div>
-      </div>
+    <div>
+      <h2>Formulaire</h2>
+      <p>
+        Avant toutes choses, il va nous falloir certaines informations pour le
+        calcul de l'AAH. Vous allez devoir remplir un formulaire. Celui-ci
+        prendra approximativement 10 minutes de votre temps. Le calcul se fera
+        sur l'année en cours moins 2ans. Nous sommes donc en {date}, donc
+        munissez vous de tous les bulletins de salaire de {date - 2}
+      </p>
+      <p>Pour gagner du temps, veuillez préparer ces documents :</p>
+      <ul>
+        <li>Votre bulletin de salaire {date - 2}</li>
+        <li>Le bulletin de salaire de votre conjoint(e) {date - 2}</li>
+        <li>
+          Le bulletin de salaire de votre (vos) enfant(s) {date - 2} ou des
+          personnes à votre charge
+        </li>
+      </ul>
+      <p>Le formulaire sera en quatre parties.</p>
+      <ul>
+        <li>Les questions sur votre foyer</li>
+        <li>Celle vous concernant</li>
+        <li>Celle de votre conjoint(e)</li>
+        <li>Celle de votre (vos) enfant(s) et ou des personnes à charge</li>
+      </ul>
+      <p>
+        Concernant les informations que vous allez nous fournir, Elle seront
+        stocké en base données privé. Elle pourront êtres supprimés sur demande
+        de votre part via <Link to="/contact">le formulaire de contact</Link>
+      </p>
+      <Link to="/form-questions">Départ du formulaire</Link>
     </div>
-    
   );
 };
 

@@ -14,16 +14,13 @@ const Contact = () => {
   const handleOnSubmitMSG = async evt => {
     evt.preventDefault();
 
-    const response = await fetch(
-      `https://projet-estime-ton-aah-back.herokuapp.com/send_message`,
-      {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify({ mailerState })
-      }
-    )
+    const response = await fetch("http://localhost:5000/send_message", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({ mailerState })
+    })
       .then(response => response.json())
       .then(async response => {
         const resData = await response;
@@ -50,29 +47,20 @@ const Contact = () => {
       ...prevState,
       [evt.target.name]: evt.target.value
     }));
-    console.log("Contenu de l'email ", mailerState);
+    console.log("mailerState ", mailerState);
   };
 
   // le données placé ici destinées pour nodemailer
   return (
-  <div className="home__body">
-    <div className="home__body__title">
-      <h2 className="paragraphe__title">
-        Contact
-      </h2>
-      <div className="cardChiffre">
-        <form
+    <div className="contact">
+      <form
         className="contact__form"
+        autoComplete="off"
         onSubmit={handleOnSubmitMSG}
-        name="Formulaire de contact"
-        >
-        <label 
-          htmlFor="firstname" 
-          className="contact__form__in"
-        >
+      >
+        <label htmlFor="firstname" className="contact__label">
           Prénom :{" "}
           <input
-            className="contact__form__in__response"
             type="text"
             name="firstname"
             id="firstname"
@@ -83,12 +71,9 @@ const Contact = () => {
             autoFocus
           />
         </label>
-        <label 
-          htmlFor="lastname" 
-          className="contact__form__in">
+        <label htmlFor="lastname" className="contact__label">
           Nom :{" "}
           <input
-            className="contact__form__in__response"
             type="text"
             name="lastname"
             id="lastname"
@@ -98,12 +83,9 @@ const Contact = () => {
             onChange={handleInputChange}
           />
         </label>
-        <label 
-          htmlFor="contactEmail" 
-          className="contact__form__in">
+        <label htmlFor="contactEmail" className="contact__label">
           Email :{" "}
           <input
-            className="contact__form__in__response"
             type="email"
             name="contactEmail"
             id="contactEmail"
@@ -113,42 +95,35 @@ const Contact = () => {
             onChange={handleInputChange}
           />
         </label>
-        <div className="contact__form__in" >
-          <div className="contact__form__in__comment" >
-            <label htmlFor="sujet">
-              Sujet :{" "}
-              <input
-                className="contact__form__in__response"
-                type="text"
-                name="sujet"
-                id="sujet"
-                required
-                placeholder="sujet"
-                value={mailerState.sujet}
-                onChange={handleInputChange}
-              />
-            </label>
-            <textarea
-              className="contact__form__in__area"
-              name="comments"
-              id="comments"
-              rows="10"
-              cols="30"
-              required
-              placeholder="Dites-nous tout..."
-              value={mailerState.comments}
-              onChange={handleInputChange}
-            >
-            </textarea>
-          </div>
-        </div>
+        <label htmlFor="sujet" className="contact__label">
+          Sujet :{" "}
+          <input
+            type="text"
+            name="sujet"
+            id="sujet"
+            required
+            placeholder="sujet"
+            value={mailerState.sujet}
+            onChange={handleInputChange}
+          />
+        </label>
+
+        <textarea
+          name="comments"
+          id="comments"
+          rows="10"
+          cols="30"
+          className="contact__area"
+          required
+          placeholder="Dites-nous tout..."
+          value={mailerState.comments}
+          onChange={handleInputChange}
+        ></textarea>
+        <button type="submit" className="contact__btn">
+          Envoyer
+        </button>
       </form>
-      </div>
-      <button type="submit">
-        Envoyer
-      </button>
     </div>
-  </div>
   );
 };
 

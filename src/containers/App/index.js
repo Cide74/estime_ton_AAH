@@ -2,8 +2,7 @@ import { connect } from "react-redux";
 import App from "src/components/App";
 
 const mapStateToProps = state => ({
-  islogged: state.user.islogged,
-  pseudo: state.user.pseudo
+  islogged: state.user.islogged
 });
 
 const mapDispatchToProps = dispatch => ({});

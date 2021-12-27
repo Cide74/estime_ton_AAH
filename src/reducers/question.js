@@ -1,83 +1,37 @@
-import {
-  CHANGE_FIELD_QUESTION,
-  REFRESH_QUESTION,
-  ALL_FORMS,
-} from "src/actions/question";
+import { CHANGE_FIELD_QUESTION } from "src/actions/question";
+import { REFRESH_STATE } from "src/actions/user";
 
 const initialState = {
-  // base
-  year: new Date().getFullYear(),
-  aah_amount: 903.6,
-  mva_amount: 104.77,
-  smichb: 10.25,
-  smicnbtf: 151.67,
-  ageMinimal: 20,
-  ageRetraite: 62,
-  disability_rate_mini: 0.6666,
-  disability_rate_max: 0.8,
-  majorationPlafonCouple: 0.81,
-  coefPersonneACharge: 0.5,
-  // foyer
   place_of_residence: true,
-  household_composition: "",
+  household_composition: 0,
   nb_child: 0,
   apl: false,
-
-  // demandeur
-  applicant_age: 0,
-  applicant_disability: false,
-  applicant_disability_rate: 0,
-  applicant_income_without_activity: 0,
-  applicant_income_with_activity: 0,
-
-  // conjoint(e)
-  spouse_age: 0,
-  spouse_disability: false,
-  spouse_disability_rate: 0,
-  spouse_income_without_activity: 0,
-  spouse_income_with_activity: 0,
-
-  // les enfants ou autre personne
-  child_income1: 0,
-  // resultat
-  infosimulation: {},
-  message: "",
-  success: false,
-  allForms: {},
+  disability_rate: 0 // valeur entre 0 et 1
 };
 
 const question = (state = initialState, action = {}) => {
   switch (action.type) {
     case CHANGE_FIELD_QUESTION: {
-      //console.log(`${action.name} : ${action.value}`);
+      console.log("", action.value);
       return {
         ...state,
-        [action.name]: action.value,
+        [action.key]: action.value
       };
     }
-    case REFRESH_QUESTION: {
-       console.log("RefreshQuestion reducer", action.payload);
+    case REFRESH_STATE: {
+      console.log(action.payload);
       return {
         ...state,
-        // ...action.payload,
-        infosimulation: action.payload.infosimulation,
-
-        
-      };
-
-      
-    
-    };
-    console.log(`infosimulation`, infosimulation)
-    case ALL_FORMS: {
-      // console.log("all forms payload", action.payload);
-      return {
-        ...state,
-        allForms: action.payload,
+        // ...action.payload.userInfo
+        place_of_residence: action.payload.userInfo.place_of_residence,
+        household_composition: action.payload.userInfo.household_composition,
+        nb_child: action.payload.userInfo.nb_child,
+        apl: action.payload.userInfo.apl,
+        disability_rate: action.payload.userInfo.disability_rate
       };
     }
     default:
-      return { ...state };
+      return state;
   }
 };
 export default question;

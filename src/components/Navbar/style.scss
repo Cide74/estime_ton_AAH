@@ -1,0 +1,12 @@
+@use "src/styles/vars" as v;
+
+#navbar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: white;
+  border-radius: 0rem 0rem 1rem 1rem;
+  border-bottom: solid 2px v.$color-body;
+  border-left: solid 2px v.$color-body;
+  border-right: solid 2px v.$color-body;
+}

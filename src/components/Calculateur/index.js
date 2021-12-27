@@ -2,8 +2,22 @@ import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
+import {
+  APIPresta,
+  APIPersACharge,
+  APIPersCouple,
+  aahMontant,
+  majorationPlafondCouple,
+  coefPersonneACharge,
+  smichb,
+  smicnbtf,
+  mva,
+  ageMinimal,
+  ageRetraite,
+  tauxInvalidite,
+  tauxInvaliditeMinimum
+} from "src/API/APIext.js";
 import axios from "axios";
-import Api from "src/API/index";
 
 import "./style.scss";
 
@@ -43,19 +57,15 @@ const Calculateur = () => {
   }
 
   useEffect(() => {
-    Api
-      .get("/apiext/aah")
+    axios
+      .get(APIPresta)
       .then(data => {
-        const objprestaDataValues = Object.values(data.data.aahMontant);
-        const objprestaDataKeys = Object.keys(data.data.aahMontant);
-        // console.log(data.data.description);
-        // console.log( 'data' ,data);
-        // console.log(`data description =>`, data.data.aahDescription)
-        // console.log(`data value =>`, data.data.aahMontant)
-        // console.log(`data =>`, Object.values(data.data.aahMontant))
+        const objprestaDataValues = Object.values(data.data.values);
+        const objprestaDataKeys = Object.keys(data.data.values);
+        console.log(data.data.description);
         const frDate = dateTransform(objprestaDataKeys);
         // console.log(frDate.join("-"));
-        setPrestaMessage(data.data.aahDescription);
+        setPrestaMessage(data.data.description);
         setPrestaDataValue(objprestaDataValues[0]);
         setPrestaDataKey(frDate);
       })
@@ -73,7 +83,7 @@ const Calculateur = () => {
           <Box component="form" onSubmit={handleSubmitform}>
             <div className="Calculator__bloc__amt">
               <p>
-                {prestaMessage} depuis le {prestaDataKey} :
+                {prestaMessage} datant du {prestaDataKey} :
               </p>
               <p>
                 <strong>{prestaDataValue} €</strong>

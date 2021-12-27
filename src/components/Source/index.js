@@ -2,13 +2,13 @@ import React from "react";
 
 import "./style.scss";
 
-const Articles = props => {
+const Source = props => {
   // écrire le code ici
   return (
     <div>
-      <h2>Listes de mes articles</h2>
+      <h2>Toutes les sources</h2>
     </div>
   );
 };
 
-export default Articles;
+export default Source;

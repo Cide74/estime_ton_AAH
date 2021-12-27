@@ -15,6 +15,7 @@ import "./style.scss";
 
 /**
  *
+ * @param {string} birthdate - La date de naissance
  * @param {string} password - le mot de passe
  * @param {string} passwordConf - la confirmation de mot de passe
  * @param {function} onSubscibe - déclanche l'envoi du formulaire
@@ -81,112 +82,117 @@ const Signup = ({ password, passwordConf, onSubscribe, fieldChange }) => {
   });
 
   return (
-    <div className="home__body">
-      <div className="home__body__title">
-        <div className="signup">
-          <h2>Inscription au site</h2>
-          <Box
-            component="form"
-            onSubmit={handleOnSubmitSubcribe}
-            sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
-          >
-            <div className="signup__out-inputs">
-            <div className="signup__out-inputs__in">
-              <TextField
-                required
-                autoFocus
-                autoComplete="pseudo"
-                label="pseudo"
-                name="pseudo"
-                id="pseudo"
-                onChange={handleInputChange}
-                sx={{ m: 1, width: "25ch" }}
-                helperText="Votre Pseudo"
-                autoComplete="on"
-              />
-            </div>
+    <div className="signup">
+      <h2>Inscription au site</h2>
+      <Box
+        component="form"
+        onSubmit={handleOnSubmitSubcribe}
+        sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+      >
+        <div>
+          <TextField
+            required
+            autoFocus
+            autoComplete="pseudo"
+            label="pseudo"
+            name="pseudo"
+            id="pseudo"
+            onChange={handleInputChange}
+            sx={{ m: 1, width: "25ch" }}
+            helperText="Votre Pseudo"
+          />
+        </div>
+        <div>
+          <TextField
+            required
+            type="date"
+            name="birthdate"
+            id="birthdate"
+            onChange={handleInputChange}
+            sx={{ m: 1, width: "25ch" }}
+            helperText="Votre date de naissance"
+          />
+        </div>
+        <div>
+          <TextField
+            required
+            type="email"
+            name="email"
+            id="email"
+            label="email"
+            onChange={handleInputChange}
+            sx={{ m: 1, width: "25ch" }}
+            helperText="Votre email"
+          />
+        </div>
+        <div>
+          <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-password">
+              Mot de passe
+            </InputLabel>
+            <OutlinedInput
+              required
+              id="password"
+              name="password"
+              type={values.showPassword ? "text" : "password"}
+              value={password}
+              onChange={handleInputChange}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              label="Password"
+            />
+            <FormHelperText id="outlined-weight-helper-text">
+              Votre mot de passe
+            </FormHelperText>
+          </FormControl>
+        </div>
 
-            <div className="signup__out-inputs__in">
-              <TextField
-                required
-                type="email"
-                name="email"
-                id="email"
-                label="email"
-                onChange={handleInputChange}
-                sx={{ m: 1, width: "25ch" }}
-                helperText="Votre email"
-                autoComplete="on"
-              />
-            </div>
-            <div className="signup__out-inputs__in">
-              <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
-                <InputLabel htmlFor="outlined-adornment-password">
-                  Mot de passe
-                </InputLabel>
-                <OutlinedInput
-                  required
-                  id="password"
-                  name="password"
-                  type={values.showPassword ? "text" : "password"}
-                  value={password}
-                  onChange={handleInputChange}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                        edge="end"
-                      >
-                        {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                  label="Password"
-                />
-                <FormHelperText id="outlined-weight-helper-text">
-                  Votre mot de passe
-                </FormHelperText>
-              </FormControl>
-            </div>
-                
-            <div className="signup__out-inputs__in">
-              <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
-                <InputLabel htmlFor="outlined-adornment-password">
-                  Mot de passe
-                </InputLabel>
-                <OutlinedInput
-                  required
-                  id="passwordConf"
-                  name="passwordConf"
-                  type={values.showPassword ? "text" : "password"}
-                  value={passwordConf}
-                  onChange={handleInputChange}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                        edge="end"
-                      >
-                        {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                  label="Password"
-                />
-                <FormHelperText id="outlined-weight-helper-text">
-                  Confirmez votre mot de passe
-                </FormHelperText>
-              </FormControl>
-            </div>
-                </div>
-            <button type="submit">Inscription</button>
-            {validation ? <div>{validation}</div> : <div>{passwordOk}</div>}
-          </Box>
-        </div></div></div>
+        <div>
+          <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-password">
+              Mot de passe
+            </InputLabel>
+            <OutlinedInput
+              required
+              id="passwordConf"
+              name="passwordConf"
+              type={values.showPassword ? "text" : "password"}
+              value={passwordConf}
+              onChange={handleInputChange}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              label="Password"
+            />
+            <FormHelperText id="outlined-weight-helper-text">
+              Confirmez votre mot de passe
+            </FormHelperText>
+          </FormControl>
+        </div>
+
+        <button type="submit">Inscription</button>
+        {validation ? <div>{validation}</div> : <div>{passwordOk}</div>}
+      </Box>
+    </div>
   );
 };
 
