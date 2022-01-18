@@ -1,0 +1,17 @@
+@use "src/styles/vars" as v;
+
+.cardGuestbook {
+  display: flex;
+  min-width: 200px;
+
+  &__footer {
+    display: inline-flex;
+
+    &__in {
+      text-align: center;
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+}

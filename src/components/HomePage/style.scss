@@ -1,21 +1,44 @@
 @use "src/styles/vars" as v;
 
-#home__body {
+.home{
 
-  border-radius: 1rem;
+  &__body {
+    border-radius: 0.5rem;
+    background-color: v.$color-in-body;
+    border: solid 2px #e47967;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 
-  //height: 100%;
-  background-color: v.$color-in-body;
-  border-top: solid 2px #E47967;
-  border-bottom: solid 2px #E47967;
-  flex: block;
-
-  &__title {
-    background-color: white;
-    margin: 2.5rem;
-    border-radius: 1rem;
-    padding: 2rem;
-    min-height: 80vh;
-    display: block;
+    &__title {
+      background-color: white;
+      margin: 1rem;
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      flex: 1;
+      border: solid 1px #e47967;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      //padding: 2rem 5rem;
+      padding: 1rem;
+    }
   }
+
+  &__paragraphe {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    text-align: justify;
+    width: 50%;
+    text-indent: 2rem;
+    line-height: normal;
+  }
+
+}
+.logo {
+  width: 20%;
+  border-radius: v.$gutter/2;
+  border: v.$color-border solid 0.11em;
 }

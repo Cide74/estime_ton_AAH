@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Proptypes from "prop-types";
 import "./style.scss";
 
@@ -36,8 +36,7 @@ const Question = ({
   isLogged
 }) => {
 
-  console.log(`success`, success)
-  console.log(`message`, message)
+ 
 
   const [consort, setConsort] = useState(false); // en couple = true
   const [child, setChild] = useState(false); // personnes à charge
@@ -47,11 +46,11 @@ const Question = ({
   const [gotJob, setGotJob] = useState(false);
   const [msg, setMsg] = useState("");
   const [isSubmit, setIsSubmit] = useState(false);
-  const accueil = useHistory();
+  const navigate = useNavigate();
 
-  console.log(`msg`, msg)
+ 
 
-  // TODO faire un regex sur les inputs pour restreindre les possibilité
+ 
 
   const date = new Date().getFullYear();
 
@@ -125,7 +124,7 @@ const Question = ({
       time = setTimeout(() => {
         setMsg("");
         setIsSubmit(false);
-        accueil.push("/");
+        navigate("/");
       }, 3000);
       setMsg(message);
     }

@@ -3,7 +3,7 @@ const webpack = require("webpack");
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common.js");
 
-const port = 3002;
+const port = 3000;
 
 module.exports = merge(common, {
   mode: "development",
@@ -19,27 +19,27 @@ module.exports = merge(common, {
             loader: "css-loader",
             options: {
               sourceMap: true,
-              importLoaders: 2
-            }
+              importLoaders: 2,
+              import: true,
+            },
           },
           {
             loader: "postcss-loader",
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           {
             loader: "sass-loader",
             options: {
               sourceMap: true,
-              implementation: require("sass")
-            }
-          }
-        ]
-      }
-    ]
+              implementation: require("sass"),
+            },
+          },
+        ],
+      },
+    ],
   },
-
   devServer: {
     historyApiFallback: true,
     contentBase: paths.build,
@@ -50,8 +50,8 @@ module.exports = merge(common, {
     compress: true,
     hot: true,
     watchOptions: {
-      ignored: /node_modules/
+      ignored: /node_modules/,
     },
-    port
-  }
+    port,
+  },
 });

@@ -10,11 +10,15 @@ export const MODIFY_ONE_ARTICLE = "MODIFY_ONE_ARTICLE";
 export const CLEAR_ARTICLE = "CLEAR_ARTICLE";
 export const CALL_ALL_ARTICLES = "CALL_ALL_ARTICLES";
 export const ALL_ARTICLES = "ALL_ARTICLES";
+export const REFRESH_ONE_ARTICLE = "REFRESH_ONE_ARTICLE";
 
 export const getArticle = () => ({
   type: GET_ARTICLE,
 });
-
+export const refreshOneArticle = (payload) => ({
+  type: REFRESH_ONE_ARTICLE,
+  payload,
+});
 export const refreshArticle = (payload) => ({
   type: REFRESH_ARTICLE,
   payload,
@@ -35,7 +39,7 @@ export const changeFieldArticle = (name, value) => ({
   value,
 });
 
-// déclancheur
+// déclencheur
 export const sendArticleForm = () => ({
   type: SEND_ARTICLE_FORM,
 });

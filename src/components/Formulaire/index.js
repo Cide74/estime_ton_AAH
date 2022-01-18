@@ -3,41 +3,91 @@ import { Link } from "react-router-dom";
 
 import "./style.scss";
 
-const Formulaire = () => {
-  const date = new Date().getFullYear();
+const Formulaire = ({ isLogged }) => {
+  const currentYear = new Date().getFullYear();
 
   return (
-    <div>
-      <h2>Formulaire</h2>
-      <p>
-        Avant toutes choses, il va nous falloir certaines informations pour le
-        calcul de l'AAH. Vous allez devoir remplir un formulaire. Celui-ci
-        prendra approximativement 10 minutes de votre temps. Le calcul se fera
-        sur l'année en cours moins 2ans. Nous sommes donc en {date}, donc
-        munissez vous de tous les bulletins de salaire de {date - 2}
-      </p>
-      <p>Pour gagner du temps, veuillez préparer ces documents :</p>
-      <ul>
-        <li>Votre bulletin de salaire {date - 2}</li>
-        <li>Le bulletin de salaire de votre conjoint(e) {date - 2}</li>
-        <li>
-          Le bulletin de salaire de votre (vos) enfant(s) {date - 2} ou des
-          personnes à votre charge
-        </li>
-      </ul>
-      <p>Le formulaire sera en quatre parties.</p>
-      <ul>
-        <li>Les questions sur votre foyer</li>
-        <li>Celle vous concernant</li>
-        <li>Celle de votre conjoint(e)</li>
-        <li>Celle de votre (vos) enfant(s) et ou des personnes à charge</li>
-      </ul>
-      <p>
-        Concernant les informations que vous allez nous fournir, Elle seront
-        stocké en base données privé. Elle pourront êtres supprimés sur demande
-        de votre part via <Link to="/contact">le formulaire de contact</Link>
-      </p>
-      <Link to="/form-questions">Départ du formulaire</Link>
+    <div className="home__body">
+      <div className="home__body__title">
+        <h2 className="paragraphe__title">Formulaire</h2>
+        <div className="Preformulaire__wrapper">
+          <p className="Preformulaire__paragraphe">
+            Pour le calcul de l'AAH, il va nous falloir certaines informations.
+            Vous allez devoir remplir un formulaire. Celui-ci prendra
+            approximativement 5 minutes de votre temps. Le calcul se fera sur
+            l'année en cours N-2. Nous sommes en {currentYear}, vous devez donc vous munir de
+            tous les bulletins de salaire de {currentYear - 2}.
+          </p>
+          <div className="content_card">
+            <h3 className="content_card__title">Pour gagner du temps,</h3>
+            <h3 className="content_card__title">
+              Veuillez préparer ces documents :
+            </h3>
+            <div className="content_card__paragraphe">
+              <ul className="content_card__liste">
+                <li className="Preformulaire__liste">
+                  - Votre bulletin de salaire {currentYear - 2}.
+                </li>
+                <li className="Preformulaire__liste">
+                  - Le bulletin de salaire de votre conjoint(e) de {currentYear - 2}.
+                </li>
+                <li className="Preformulaire__liste">
+                  - Le bulletin de salaire {currentYear - 2} de votre (vos) enfant(s)
+                  ou des personnes à votre charge.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="content_card">
+            <h3 className="content_card__title">
+              Le formulaire sera en quatre parties :
+            </h3>
+            <div className="content_card__paragraphe">
+              <ul className="content_card__liste">
+                <li className="Preformulaire__liste">
+                  - Les questions sur votre foyer.
+                </li>
+                <li className="Preformulaire__liste">
+                  - Celles vous concernant.
+                </li>
+                <li className="Preformulaire__liste">
+                  - Celles concernant votre conjoint(e).
+                </li>
+                <li className="Preformulaire__liste">
+                  - Celles de votre (vos) enfant(s) et ou des personnes à charge.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <p className="Preformulaire__paragraphe">
+            Concernant les informations que vous allez nous fournir, elles
+            seront stockées sur une base de données privée. Elles pourront être
+            supprimées par vous ou sur demande de votre part via{" "}
+            <Link to="/contact" className="Preformulaire__link">
+              le formulaire de contact.
+            </Link>
+          </p>
+
+          {isLogged === false ? (
+            <Link to="/login">
+              <button>
+                <div>Connectez-vous pour faire une simulation.</div>
+              </button>
+            </Link>
+          ) : (
+            <Link to="/form-questions">
+              <button>Départ du formulaire</button>
+            </Link>
+          )}
+          <h2 className="formResult__warning">
+            - Attention ! Ceci n'est qu'une estimation, basée sur les
+            informations que vous allez saisir lors du questionnaire et n'ouvre
+            aucun droit et n'a aucune valeur juridique.
+          </h2>
+        </div>
+      </div>
     </div>
   );
 };

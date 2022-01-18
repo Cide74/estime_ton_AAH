@@ -1,66 +1,103 @@
 import Api from "src/API/index";
-import { ON_SUBSCRIBE, ON_LOGIN } from "src/actions/user";
 
-import { refreshState } from "../actions/user";
+import {
+  ON_SUBSCRIBE,
+  ON_LOGIN,
+  newUserRefresh,
+  refreshState,
+  loginError,
+  allUsers,
+  CALL_ALL_USERS,
+  GET_ALL_TENTH,
+} from "src/actions/user";
+import { refreshTenArticle } from "src/actions/article";
+import { refreshTenGuestbook } from "src/actions/guestbook";
+import { refreshTenQuestion } from "src/actions/question";
+import { refreshTenComment } from "src/actions/comment";
 
-const user = store => next => async action => {
-  // valeur du state à envoyé dans la bdd
+const user = (store) => (next) => async (action) => {
+  const { pseudo, email, password, accessToken, id } = store.getState().user;
+  const options = { headers: { Authorization: `Bearer ${accessToken}` } };
 
-  const { pseudo, email, birthdate, password } = store.getState().user;
-  const {
-    disability_rate,
-    apl,
-    place_of_residence
-  } = store.getState().question;
   switch (action.type) {
     case ON_SUBSCRIBE: {
-      console.log(`middleware => on subscribe : ${email} and pseudo ${pseudo}`);
-      // connection avec L'api
-      console.log("envoyé en bbd =>", {
-        pseudo: pseudo,
-        email: email,
-        birthday: birthdate,
-        en_France: place_of_residence,
-        taux_invalidite: disability_rate
-      });
       try {
         const createUser = await Api.post("/signup", {
           pseudo,
-          birthdate,
           email,
           password,
-          disability_rate,
-          place_of_residence,
-          role: 1
+          role: 1,
         });
-        console.log(createUser.data.message);
+
+        const newUser = newUserRefresh(createUser.data);
+        console.log(newUser);
+        store.dispatch(newUser);
       } catch (error) {
-        console.trace("Une erreur est survenu dans le post", error);
-        console.log("retour de la reponse ", error.response);
-        // console.log("retour de l'API : ", error.response.data);
+        console.log("retour de la réponse en erreur ", error);
       }
       break;
     }
     case ON_LOGIN: {
-      console.log(`Middleware => on login pseudo : ${pseudo}`);
+      localStorage.clear();
+      sessionStorage.clear();
       try {
         const logUser = await Api.post("/login", {
-          pseudo,
-          password
+          pseudo: pseudo,
+          password: password,
         });
-        Api.defaults.headers.common.Authorization = `Bearer ${logUser.token}`;
+
         if (logUser.data.userInfo.pseudo !== "") {
+          sessionStorage.setItem("pseudo", logUser.data.userInfo.pseudo);
           const saveDataUser = refreshState(logUser.data);
-          console.log("On login logUser=> ", logUser.data);
           store.dispatch(saveDataUser);
         }
       } catch (error) {
-        console.log(error.status);
-        console.trace("error :", error);
+        console.log("error =>", error);
+        const msgError = loginError(error.response);
+        store.dispatch(msgError);
       }
       break;
     }
+    // tout ce qui touche un utilisateur par 10
+    case GET_ALL_TENTH: {
+      const tenArticle = `/userLastArticle/${id}`;
+      const tenMsg = `/userLastGuestbook/${id}`;
+      const tenComment = `/userLastComment/${id}`;
+      const tenSim = `/userLastInfosimulation/${id}`;
+      try {
+        const tenthArticle = await Api.get(tenArticle, options);
+        const tenthMsg = await Api.get(tenMsg, options);
+        const tenthComment = await Api.get(tenComment, options);
+        const tenthSim = await Api.get(tenSim, options);
 
+        // article
+        const myArticles = refreshTenArticle(tenthArticle.data);
+        // console.log("10 articles", myArticles);
+        store.dispatch(myArticles);
+        // simulation
+        const mySimul = refreshTenQuestion(tenthSim.data);
+        store.dispatch(mySimul);
+        // guestbook
+        const myGuest = refreshTenGuestbook(tenthMsg.data);
+        store.dispatch(myGuest);
+        // commentaires du guestbook
+        const myComment = refreshTenComment(tenthComment.data);
+        store.dispatch(myComment);
+      } catch (error) {
+        console.log(error);
+      }
+      break;
+    }
+    // pour administateur
+    case CALL_ALL_USERS: {
+      try {
+        const getAllUsers = await Api.get("/users", options);
+        const response = allUsers(getAllUsers.data);
+        store.dispatch(response);
+      } catch (error) {
+        console.log(error);
+      }
+    }
     default:
       next(action);
   }

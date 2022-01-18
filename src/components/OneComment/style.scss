@@ -1,0 +1,10 @@
+@use "src/styles/vars" as v;
+
+.comment-container {
+  width: 100%;
+
+  &__footer {
+    float: right;
+    padding: 1rem;
+  }
+}

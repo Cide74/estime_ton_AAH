@@ -5,22 +5,31 @@ import {
   CHANGE_FIELD_ARTICLE,
   CLEAR_ARTICLE,
   ALL_ARTICLES,
+  REFRESH_ONE_ARTICLE,
 } from "src/actions/article";
 
 export const initialState = {
   allArticles: [],
-  oneArticle: {},
   count: 0,
   id: 0,
   title: "",
   content: "",
-  success: "", // retour de la BDD
+  success: false, // retour de la BDD
   message: "", // retour de la BDD
   user_id: 0,
   user: "",
   created_at: "",
   updated_at: "",
   everyArticles: {},
+  // un article
+  oneArticle: {},
+  oneArtTitle: "",
+  oneArtContent: "",
+  oneArtId: 0,
+  oneArtComments: [],
+  oneArtCreated_at: "",
+  oneArtUpdated_at: "",
+  oneArtWriter: "",
 };
 
 //console.log(`initialState article`, initialState)
@@ -32,9 +41,23 @@ const article = (state = initialState, action = {}) => {
         ...state,
         [action.name]: action.value,
       };
+    case REFRESH_ONE_ARTICLE: {
+      // console.log(action.payload);
+      return {
+        ...state,
+        oneArticle: action.payload.article.rows[0],
+        oneArtContent: action.payload.article.rows[0].content,
+        oneArtTitle: action.payload.article.rows[0].title,
+        oneArtId: action.payload.article.rows[0].id,
+        oneArtCreated_at: action.payload.article.rows[0].created_at,
+        oneArtUpdated_at: action.payload.article.rows[0].updated_at,
+        oneArtComments: action.payload.article.rows[0].comment,
+        oneArtWriter: action.payload.article.rows[0].user.pseudo,
+      };
+    }
 
     case REFRESH_ARTICLE:
-      console.log("reducer refresh payload ", action.payload);
+      // console.log("reducer refresh payload ", action.payload);
 
       return {
         ...state,
@@ -52,7 +75,7 @@ const article = (state = initialState, action = {}) => {
       };
 
     case REFRESH_ALL_ARTICLE: {
-      // console.log("tout les articles ", action.payload.rows);
+      // console.log("tous les articles ", action.payload.rows);
       // pour la page Article
       return {
         ...state,

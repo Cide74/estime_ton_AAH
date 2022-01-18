@@ -2,20 +2,36 @@
 //* import { goodDateFormat} from "src/assets/datas/fonction";
 
 /**
+ * @param {string} content phrase de plus de 25 caractères
+ * @returns
+ */
+export const reduceContent = (content) => {
+  // ici on affichera les 25 premiers caractères
+  const minusContent = content.slice(0, 25);
+  return minusContent;
+};
+/**
  * @param {String} date Retour d'une date de la dataBase / API
  * @returns {String} dd/mm/yyyy
  */
 export const goodDateFormat = (date) => {
   if (date) {
-    const removeElement = date.slice(0, 10);
-    const englishDate = removeElement.split("-");
+    let removeElement, englishDate;
+    if (date.length > 10) {
+      removeElement = date.slice(0, 10);
+      englishDate = removeElement.split("-");
+    } else {
+      date.toString();
+      englishDate = date.split("-");
+    }
     const [year, month, day] = englishDate;
+
     return `${[day, month, year].join("/")}`;
   }
 };
 /**
- * @param {String} time Retour -d'une date de la dataBase / API
- * @returns {String} l'heure - hh/mm/ss
+ * @param {String} time - Retour  d'une date de la dataBase / API
+ * @returns {String} - l'heure au format hh:mm:ss
  */
 export const goodHourFormat = (time) => {
   if (time) {
@@ -27,6 +43,16 @@ export const goodHourFormat = (time) => {
     }
     return getTime;
   }
+};
+
+/**
+ * @param {string} dateAndTime - Date au format ISO, retour d'une BDD
+ * @returns la date et l'heure au format français
+ */
+export const dateAndTime = (dateAndTime) => {
+  const time = goodHourFormat(dateAndTime);
+  const date = goodDateFormat(dateAndTime);
+  return `${date} à ${time}`;
 };
 
 /**
@@ -44,9 +70,15 @@ export const dateTransform = (dateISO) => {
 export const time = (dateISO) => {
   let hour = dateISO.updated_at.split("T")[1].split(":")[0];
   let minute = dateISO.updated_at.split("T")[1].split(":")[1];
-  return [hour, minute].join(" h ").split(".")[0];
+  return [hour, minute].join("h").split(".")[0];
 };
 
+/**
+ * Renvoie une date au format ISO en définissant les dates undefined au 20/06/1981
+ *
+ * @param {string} dateISO 
+ * @returns {string} date au format ISO
+ */
 export const dateUndefind = (dateISO) => {
   if (dateISO === undefined) {
     dateISO = "1981-06-20T14:36:21.467Z";
@@ -59,9 +91,21 @@ export const dateUndefind = (dateISO) => {
   let hour = dateISO.split("T")[1].split(":")[0];
   let minute = dateISO.split("T")[1].split(":")[1];
   const date = [day, month, year].join("-");
-  const time = [hour, minute].join(" h ").split(".")[0];
+  const time = [hour, minute].join("h").split(".")[0];
   return [date, " à ", time];
 };
+
+/**
+ * @param {string} englishDate - format de date en anglais yyyy-mm-dd
+ * @returns string
+ */
+
+ export const englishDateTransform = (englishDate) => {
+  const enDate = englishDate[0].split("-");
+  const [year, month, day] = enDate;
+  return [day, month, year].join("-");
+}
+
 /**
  *
  * @param {String} name - chaine de caractère
@@ -129,10 +173,4 @@ export const name2 = (userName) => {
   console.log(`2userName6`, userName);
   const name = userName; //.charAt(0).toUpperCase() + userName.substring(1).toLowerCase();
   return name;
-};
-
-export const reduceContent = (content) => {
-  // ici on affichera les 25 premiers caractères
-  const minusContent = content.slice(0, 25);
-  return minusContent;
 };

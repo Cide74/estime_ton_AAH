@@ -44,7 +44,7 @@ const FormResult = ({ infosimulation }) => {
     <div className="home__body">
       <div className="formResult">
       <h2 className="formResult__warning">
-        - Attention ! Ceci n'est qu'une estimation, basée sur les informations que vous avez entré dans le questionnaire et n'ouvre aucun droit et n'a aucune valeur juridique.
+        - Attention ! Ceci n'est qu'une estimation, basée sur les informations que vous avez saisies lors du questionnaire, et qui n'ouvre aucun droit et n'a aucune valeur juridique.
       </h2>
       <h2 className="formResult__title">
         Voici votre estimation du {dateUndefind(infosimulation.updated_at)}.
@@ -73,13 +73,13 @@ const FormResult = ({ infosimulation }) => {
                     - {infosimulation.status_aah}
                   </p>
                   <button type="submit">
-                    Moins de détail !
+                    Moins de détails !
                   </button>
                 </div>
               </section>
             ):(
               <button type="submit">
-                Plus de détail !
+                Plus de détails !
               </button>
               )}
           </div>
@@ -113,11 +113,11 @@ const FormResult = ({ infosimulation }) => {
                   </div>
 
                   <h3 className="formResult__card__title">
-                    Question vous concernant :
+                    Questions vous concernant :
                   </h3>
                   <div className="formResult__card__para">
                     <p className="formResult__card__list"> 
-                      - Quel est votre age : {infosimulation.applicant_age}
+                      - Quel est votre âge : {infosimulation.applicant_age}
                     </p>
                     <p className="formResult__card__list"> 
                       - Etes-vous invalide :{" "}
@@ -128,11 +128,11 @@ const FormResult = ({ infosimulation }) => {
                       {infosimulation.applicant_disability_rate}%
                     </p>
                     <p className="formResult__card__list"> 
-                      - Vos revenus issue du salariat :{" "}
+                      - Vos revenus issus du salariat :{" "}
                       {infosimulation.applicant_income_with_activity} €
                     </p>
                     <p className="formResult__card__list"> 
-                      - Vos revenus hors activité du salariat :{" "}
+                      - Vos revenus hors activité de salariat :{" "}
                       {infosimulation.applicant_income_without_activity} €
                     </p>
                   </div>
@@ -140,27 +140,27 @@ const FormResult = ({ infosimulation }) => {
                   { infosimulation.household_composition === "seul" ? ( " " ) : ( 
                     <section>
                       <h3 className="formResult__card__title">
-                        Question concernant votre conjoint(e):
+                        Questions concernant votre conjoint(e):
                       </h3>
                       <div className="formResult__card__para">
                         <p className="formResult__card__list"> 
-                          - Quel est l'age de votre conjoint(e) :{" "}
+                          - Quel est l'âge de votre conjoint(e) :{" "}
                           {infosimulation.spouse_age}
                         </p>
                         <p className="formResult__card__list"> 
-                          - Est il(elle) invalide :{" "}
+                          - Est-il(elle) invalide :{" "}
                           {infosimulation.spouse_disability ? "oui" : "non"}
                         </p>
                         <p className="formResult__card__list"> 
-                          - Quel est sont taux d'invalidité :{" "}
+                          - Quel est son taux d'invalidité :{" "}
                           {infosimulation.spouse_disability_rate}%
                         </p>
                         <p className="formResult__card__list"> 
-                          - Quel sont ses revenus issue du salariat :{" "}
+                          - Quels sont ses revenus issus du salariat :{" "}
                           {infosimulation.spouse_income_with_activity} €
                         </p>
                         <p className="formResult__card__list"> 
-                          - Quel sont ses revenus hors activité du salariat :{" "}
+                          - Quels sont ses revenus hors activité de salariat :{" "}
                           {infosimulation.spouse_income_without_activity} €
                         </p>
                       </div>
@@ -249,7 +249,7 @@ const FormResult = ({ infosimulation }) => {
                           {infosimulation.eligibilite_mva_foyer ? "oui" : "non"}
                         </p>
                         <p className="formResult__card__list"> 
-                          - Le coéficiant de votre foyer : {" "}
+                          - Le coefficient de votre foyer : {" "}
                           {infosimulation.coef_foyer} %
                         </p>
                         <p className="formResult__card__list"> 
@@ -265,7 +265,7 @@ const FormResult = ({ infosimulation }) => {
                           {infosimulation.aah_max} €
                         </p>
                         <p className="formResult__card__list"> 
-                          - Le montant AAH plafonner à percevoir : {" "}
+                          - Le montant AAH plafonné à percevoir : {" "}
                           {infosimulation.montant_aah_sans_mva_mensuel} €
                         </p>
                         <p className="formResult__card__list"> 
@@ -274,7 +274,7 @@ const FormResult = ({ infosimulation }) => {
                       </div>
                     </section>
                 <button type="submit">
-                  Moins de détail !
+                  Moins de détails !
                 </button>
               </div>
             ):(
@@ -283,12 +283,6 @@ const FormResult = ({ infosimulation }) => {
               </button>
               )}
           </div>
-
-
-
-
-
-          
         </div>
       ) : (
         <Loading />

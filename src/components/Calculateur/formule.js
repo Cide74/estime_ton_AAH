@@ -1,6 +1,6 @@
 console.log(`je suis dans la formule`)
 
-  // Les données a importer
+  // Les données à importer
   const aahMontant = 903.6; // https://fr.openfisca.org/api/latest/parameter/prestations.minima_sociaux.aah.montant
   const majorationPlafonCouple = 0.81; // https://fr.openfisca.org/api/latest/parameter/prestations.minima_sociaux.aah.majorationPlafonCouple
   const coefPersonneACharge = 0.5 ; // https://fr.openfisca.org/api/latest/parameter/prestations.minima_sociaux.aah.majoration_plafond_personne_a_charge
@@ -27,14 +27,14 @@ console.log(`je suis dans la formule`)
   const nbPersonneACharge = 2 ;
 
   //! les revenus
-  const revenusDemandeurSansActivite = 00000*12; // salaire net imposable annuelle / mensuelle
+  const revenusDemandeurSansActivite = 00000*12; // salaire net imposable annuel / mensuel
   const revenusDemandeurAvecActivite = 000*12;
-  const revenusConjoint = 2000*12 ; //1554*12; //salaire net imposable annuelle / mensuelle
-  const revenusEnfant1 = 1 ; //salaire net imposable annuelle / mensuelle
-  const revenusEnfant2 = 20 ; //salaire net imposable annuelle / mensuelle
-  const revenusEnfant3 = 300 ; //salaire net imposable annuelle / mensuelle
-  const revenusEnfant4 = 4000 ; //salaire net imposable annuelle / mensuelle
-  const revenusEnfant5 = 50000 ; //salaire net imposable annuelle / mensuelle
+  const revenusConjoint = 2000*12 ; //1554*12; //salaire net imposable annuel / mensuel
+  const revenusEnfant1 = 1 ; //salaire net imposable annuel / mensuel
+  const revenusEnfant2 = 20 ; //salaire net imposable annuel / mensuel
+  const revenusEnfant3 = 300 ; //salaire net imposable annuel / mensuel
+  const revenusEnfant4 = 4000 ; //salaire net imposable annuel / mensuel
+  const revenusEnfant5 = 50000 ; //salaire net imposable annuel / mensuel
 
   //! Toutes les Fonctions
   // Eligibilité AAH du demandeur
@@ -94,10 +94,10 @@ console.log(`je suis dans la formule`)
     ) * aahMontant ;
   };
 
-  //* Fonction si la personne handicapé travail
+  //* Fonction si la personne handicapée travaille
   function assiette_demandeur(revenus_demandeur){
     smic_brut_annuel = 12 * smichb * smicnbtf;
-    //! ici seulement si il touche 30%  de plus que le smic brute annuel sinon tranche 1 = 0  
+    //! ici seulement s'il touche 30%  de plus que le smic brute annuel sinon tranche 1 = 0  
     let tranche1 ;
       if( (( smic_brut_annuel * 1.3) < revenus_demandeur)) {
         tranche1 = revenus_demandeur - smic_brut_annuel * 1.3  ;
@@ -162,7 +162,7 @@ console.log(`je suis dans la formule`)
   return   0.9 * (1 - 0.2) * revenusToTalEnfant;
   };
 
-  //* Le montant AAH a percevoire
+  //* Le montant AAH a percevoir
   function montantAAHPercu(resultassietteTotalFoyer){
     if ( eligibiliteAAH === false ) {
       montant = 0 ;
@@ -220,13 +220,13 @@ console.log(`je suis dans la formule`)
     const aahMontantSurAssietteAnnuel = Math.round(plafondFoyerAnnuel - assietteTotalFoyerAnnuel);
     const aahMontantSurAssietteMensuel = Math.round(aahMontantSurAssietteAnnuel / 12);
 
-    // Montant AAH à percevoire
+    // Montant AAH à percevoir
     const AAHPercuMax = montantAAHPercu(aahMontantSurAssietteMensuel);
 
     // Somme à percevoir AAH + MVA
     const AAHAvecMVA = sommePercuAAHAvecMVA(AAHPercuMax);
   
-    //! donnée à sortire
+    //! donnée à sortir
     console.log(`Données à afficher =======>`);
     console.log(`---------------------------------`);
 
@@ -259,19 +259,19 @@ console.log(`je suis dans la formule`)
     console.log(`plafond du foyer annuel =>`, plafondFoyerAnnuel);    
     console.log(`---------------------------------`);
 
-      console.log(`=> Le montant AAH a percevoire au Maximum `);
+      console.log(`=> Le montant AAH a percevoir au Maximum `);
     console.log(`Montant AAH à percevoir annuellement au Maximum`, aahMontantSurAssietteAnnuel);
     console.log(`Montant AAH à percevoir mensuellement au Maximum`, aahMontantSurAssietteMensuel);
     console.log(`---------------------------------`);
 
-      console.log(`=> Montant AAH à percevoire `);
-    console.log(`Montant AAH à percevoire Mensuellement`, AAHPercuMax);
-    console.log(`Montant AAH à percevoire Annuellement`, AAHPercuMax*12);
+      console.log(`=> Montant AAH à percevoir `);
+    console.log(`Montant AAH à percevoir Mensuellement`, AAHPercuMax);
+    console.log(`Montant AAH à percevoir Annuellement`, AAHPercuMax*12);
     console.log(`---------------------------------`);
 
-      console.log(`=> Montant AAH + MVA à percevoire `);
-    console.log(`Montant AAH + MVA à percevoire Mensuellement `, AAHAvecMVA);
-    console.log(`Montant AAH + MVA à percevoire Annuellement `, AAHAvecMVA*12);
+      console.log(`=> Montant AAH + MVA à percevoir `);
+    console.log(`Montant AAH + MVA à percevoir Mensuellement `, AAHAvecMVA);
+    console.log(`Montant AAH + MVA à percevoir Annuellement `, AAHAvecMVA*12);
     console.log(`---------------------------------`);
 
     console.log(`limite avant atteinte du plafond`, plafondFoyerAnnuel - revenusTotalFoyer)

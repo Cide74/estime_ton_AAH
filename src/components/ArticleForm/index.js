@@ -2,16 +2,18 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import TextareaAutosize from "@mui/material/TextareaAutosize";
+
 import "./style.scss";
 
 /**
  * @param {string} title - titre de l'article
  * @param {string} content - Contenu de l'article
- * @param {boolean} success - Reponse à la requete de la BDD
+ * @param {boolean} success - Réponse à la requete de la BDD
  * @param {string} message - message de la BDD
- * @param {func} changeFieldArticle - creation d'un article
- * @param {func} sendArticleForm - déclancheur du formulaire
+ * @param {func} changeFieldArticle - création d'un article
+ * @param {func} sendArticleForm - déclencheur du formulaire
  * @param {func} clearArticle - purifie le formulaire
  * @returns JSX component
  */
@@ -26,7 +28,7 @@ const ArticleForm = ({
 }) => {
   const [isValue, setIsValue] = useState(false);
 
-  const accueil = useHistory();
+  const navigate = useNavigate();
 
   const handleSubmitForm = (evt) => {
     evt.preventDefault();
@@ -37,19 +39,16 @@ const ArticleForm = ({
   const handleInputChange = (evt) => {
     const value = evt.target.value;
     const name = evt.target.name;
-    // console.log(name, " ", value);
     changeFieldArticle(name, value);
   };
 
   useEffect(() => {
     let time;
-    // console.log(`success ${success} et isValue ${isValue}`);
     if (success && isValue) {
-      console.log("j'ai bien créé l'article");
       time = setTimeout(() => {
         setIsValue(false);
         clearArticle();
-        accueil.push("/");
+        navigate("/");
       }, 3000);
     }
     return () => clearTimeout(time);
@@ -58,9 +57,9 @@ const ArticleForm = ({
   return (
     <div className="home__body">
       <div className="home__body__title">
-        <div className="cardChiffre">
+        <div className="content_card">
           <div className="cardChiffre__title"></div>
-          <div className="cardChiffre__paragraphe">
+          <div className="cardChiffre__paragraphe content_form">
             <Box
               component="form"
               onSubmit={handleSubmitForm}
@@ -77,24 +76,22 @@ const ArticleForm = ({
                   label="Titre"
                   name="title"
                   id="title"
-                  value={title}
                   onChange={handleInputChange}
-                  sx={{ m: 1, width: "25ch" }}
+                  sx={{ m: 1.5, width: "25ch" }}
                   helperText="Le titre de l'article"
                 />
               </div>
               <div>
-                <TextField
+                <TextareaAutosize
                   required
-                  multiline
                   label="Votre texte"
                   name="content"
                   id="content"
-                  rows={5}
-                  value={content}
+                  minRows={5}
+                  cols={10}
                   onChange={handleInputChange}
-                  sx={{ m: 1, width: "25ch" }}
-                  helperText="Le contenu de l'article"
+                  style={{ width: 570, height: 320 }}
+                  placeholder="Le contenu de l'article"
                 />
               </div>
               <button type="submit">Envoyer</button>
@@ -111,14 +108,14 @@ const ArticleForm = ({
   );
 };
 
-ArticleForm.proptypes = {
+ArticleForm.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   success: PropTypes.bool.isRequired,
   message: PropTypes.string.isRequired,
   changeFieldArticle: PropTypes.func.isRequired,
   sendArticleForm: PropTypes.func.isRequired,
-  clearArticle: PropTypes.func.isRequired,
+  clearArticle: PropTypes.func,
 };
 ArticleForm.defaultProps = {
   title: "",

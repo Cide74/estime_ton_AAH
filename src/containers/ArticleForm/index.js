@@ -3,17 +3,18 @@ import ArticleForm from "src/components/ArticleForm";
 import {
   changeFieldArticle,
   sendArticleForm,
-  clearArticle
+  clearArticle,
 } from "src/actions/article";
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   title: state.article.title,
   content: state.article.content,
+  // passage au form en cas de modif
   success: state.article.success,
-  message: state.article.message
+  message: state.article.message,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   changeFieldArticle: (name, value) => {
     const action = changeFieldArticle(name, value);
     dispatch(action);
@@ -25,7 +26,7 @@ const mapDispatchToProps = dispatch => ({
   clearArticle: () => {
     const action = clearArticle();
     dispatch(action);
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleForm);

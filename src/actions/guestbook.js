@@ -9,12 +9,24 @@ export const MODIFY_ONE_GUESTBOOK = "MODIFY_ONE_GUESTBOOK";
 export const CLEAR_GUESTBOOK = "CLEAR_GUESTBOOK";
 export const CALL_ALL_GUESTBOOKS = "CALL_ALL_GUESTBOOKS";
 export const ALL_GUESTBOOKS = "ALL_GUESTBOOKS";
+export const REFRESH_POST_GUESTBOOK = "REFRESH_POST_GUESTBOOK";
+export const REFRESH_ONE_GUESTBOOK = "REFRESH_ONE_GUESTBOOK";
+export const REFRESH_MODIFY_GUESTBOOK = "REFRESH_MODIFY_GUESTBOOK";
+export const REFRESH_DEL_GUESTBOOK = "REFRESH_DEL_GUESTBOOK";
 
 export const getGuestbook = () => ({
   type: GET_GUESTBOOK,
 });
 export const refreshGuestbook = (payload) => ({
   type: REFRESH_GUESTBOOK,
+  payload,
+});
+export const refreshModifyGuestbook = (payload) => ({
+  type: REFRESH_MODIFY_GUESTBOOK,
+  payload,
+});
+export const refreshDelGuestbook = (payload) => ({
+  type: REFRESH_DEL_GUESTBOOK,
   payload,
 });
 export const refreshTenGuestbook = (payload) => ({
@@ -29,9 +41,14 @@ export const changeFieldGuestbook = (name, value) => ({
   value,
 });
 
-// déclancheur
+// déclencheur
 export const sendGuestbookForm = () => ({
   type: SEND_GUESTBOOK_FORM,
+});
+
+export const refreshPostGuestbook = (payload) => ({
+  type: REFRESH_POST_GUESTBOOK,
+  payload,
 });
 
 export const getOneGuestbook = (idGuestbook) => ({
@@ -56,5 +73,9 @@ export const callAllGuestbooks = () => ({
 });
 export const allGuestbooks = (payload) => ({
   type: ALL_GUESTBOOKS,
+  payload,
+});
+export const refreshOneGuestbook = (payload) => ({
+  type: REFRESH_ONE_GUESTBOOK,
   payload,
 });

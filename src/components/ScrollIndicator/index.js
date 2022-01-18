@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 import "./style.scss";
-
+// Ne convient pas aux petits écrans
 const ScrollIndicator = () => {
   const [scrollTop, setScrollTop] = useState(0);
+
   const onScroll = () => {
     const windScroll = document.documentElement.scrollTop;
     const height =
@@ -11,6 +12,7 @@ const ScrollIndicator = () => {
       document.documentElement.clientHeight;
 
     const scrolled = (windScroll / height) * 100;
+
     setScrollTop(scrolled);
   };
 
@@ -19,11 +21,12 @@ const ScrollIndicator = () => {
     return () => {
       window.removeEventListener("scroll", onScroll);
     };
-  }, []);
+  });
+
   return (
-    <div className="Scrollbar_warpper">
+    <div className="Scrollbar">
       <div
-        className="Scrollbar_warpper_style"
+        className="Scrollbar__style"
         style={{ width: `${scrollTop}%` }}
       ></div>
     </div>

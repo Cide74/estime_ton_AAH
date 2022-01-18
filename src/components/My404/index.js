@@ -7,7 +7,7 @@ const My404 = () => {
     <div id="text404">
       <img
         src={error404}
-        alt="Erreur 404 page non trouver, c'est un chat qui se leche"
+        alt="Erreur 404 page non trouvée, c'est un chat qui se lèche"
         id="text404__image404"
       />
     </div>

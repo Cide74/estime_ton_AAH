@@ -2,22 +2,8 @@ import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
-import {
-  APIPresta,
-  APIPersACharge,
-  APIPersCouple,
-  aahMontant,
-  majorationPlafondCouple,
-  coefPersonneACharge,
-  smichb,
-  smicnbtf,
-  mva,
-  ageMinimal,
-  ageRetraite,
-  tauxInvalidite,
-  tauxInvaliditeMinimum
-} from "src/API/APIext.js";
 import axios from "axios";
+import Api from "src/API/index";
 
 import "./style.scss";
 
@@ -57,15 +43,19 @@ const Calculateur = () => {
   }
 
   useEffect(() => {
-    axios
-      .get(APIPresta)
+    Api
+      .get("/apiext/aah")
       .then(data => {
-        const objprestaDataValues = Object.values(data.data.values);
-        const objprestaDataKeys = Object.keys(data.data.values);
-        console.log(data.data.description);
+        const objprestaDataValues = Object.values(data.data.aahMontant);
+        const objprestaDataKeys = Object.keys(data.data.aahMontant);
+        // console.log(data.data.description);
+        // console.log( 'data' ,data);
+        // console.log(`data description =>`, data.data.aahDescription)
+        // console.log(`data value =>`, data.data.aahMontant)
+        // console.log(`data =>`, Object.values(data.data.aahMontant))
         const frDate = dateTransform(objprestaDataKeys);
         // console.log(frDate.join("-"));
-        setPrestaMessage(data.data.description);
+        setPrestaMessage(data.data.aahDescription);
         setPrestaDataValue(objprestaDataValues[0]);
         setPrestaDataKey(frDate);
       })
@@ -83,7 +73,7 @@ const Calculateur = () => {
           <Box component="form" onSubmit={handleSubmitform}>
             <div className="Calculator__bloc__amt">
               <p>
-                {prestaMessage} datant du {prestaDataKey} :
+                {prestaMessage} depuis le {prestaDataKey} :
               </p>
               <p>
                 <strong>{prestaDataValue} €</strong>
@@ -121,7 +111,7 @@ const Calculateur = () => {
 
           <div className="Calculator__result">
             <p>
-              <strong> {results ? results : "Le resultat ici"} €</strong>
+              <strong> {results ? results : "Le résultat ici"} €</strong>
             </p>
           </div>
         </div>

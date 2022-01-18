@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Proptypes from "prop-types";
-import Logo from "src/assets/logo.png";
-import Navbar from "src/containers/Navbar";
 
 import "./style.scss";
 
@@ -10,7 +8,7 @@ const Header = ({ pseudo, pseudoWelcome, isLogged, onLogout }) => {
   const [identity, setIdentity] = useState("");
   const [iAmLog, setIAmLog] = useState(false);
   const [message, setMessage] = useState("");
-  const login = useHistory();
+  const navigate = useNavigate();
 
   function getTheMoment() {
     const hour = new Date().getHours();
@@ -22,61 +20,76 @@ const Header = ({ pseudo, pseudoWelcome, isLogged, onLogout }) => {
   }
 
   const handleOnLogout = () => {
-    console.log("Je me déconnecte");
+    // console.log("Je me déconnecte");
     setIdentity("");
     setMessage("");
     setIAmLog(false);
     localStorage.clear();
-
     onLogout();
   };
 
   const handleLogin = () => {
     // console.log("Je me redirige vers accueil");
-    login.push("/login");
+    navigate("/login");
   };
 
   useEffect(() => {
-    if (isLogged) {
+    if (isLogged || localStorage.pseudo !== "") {
       setIdentity(pseudo);
       setMessage(pseudoWelcome);
       setIAmLog(true);
-      console.log("useEffect Header Dans le if (identity)=>", identity);
     }
-  }, [isLogged, identity]);
-
+  }, [handleOnLogout, identity, isLogged]);
+  // console.log(localStorage.message);
   return (
-    <div id="header">
+    <div className="header">
       <Link to="/">
-        <div id="header__div">
-      {/**    <img
+
+        <div className="header__div">
+          {/**    <img
+
+        <div className="header__div">
+          {/** <img
+
             src={Logo}
             alt="Icone pour le retour à l'accueil"
+
             id="header__div__logo"
           />
  */}
-          <h1 id="header__div__title">Estime ton AAH</h1>
+          <h1 className="header__div__title">Estime ton AAH</h1>
 
-   {/**     {!isLogged ? (
+
+
+          {/** 
+          {localStorage.pseudo !== "" ? (
+
+      {!isLogged ? (
+
             <div id="header__hello">
+
+            <div className="header__hello">
+
+              {getTheMoment()}, {message || localStorage.message}
+              <button type="button" onClick={handleOnLogout}>
+                Déconnexion
+              </button>
+            </div>
+          ) : (
+            <div className="header__hello">
               {getTheMoment()}
               <button type="button" onClick={handleLogin}>
                 Connexion
               </button>
             </div>
-          ) : (
-            <div id="header__hello">
-              {getTheMoment()}, {message}
-              <button type="button" onClick={handleOnLogout}>
-                Déconnexion
-              </button>
-            </div>
-          )}  */}  
-        </div>
-      </Link>
-     {/**  <Navbar />*/}
+
+          )}   */} 
+          </div>
+     </Link>
+
+      {/**  <Navbar />*/}
     </div>
-  );
+          );
 };
 
 Header.proptypes = {

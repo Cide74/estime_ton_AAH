@@ -1,0 +1,161 @@
+@use "src/styles/vars" as v;
+
+.myPage {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+  line-height: 1.5;
+  &__navigation {
+    background: #fff;
+    border: 3px solid black;
+    border-radius: 15px;
+    width: 80%;
+    margin: 0 auto;
+  }
+  &__lastTenth {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__option button {
+    width: 90%;
+  }
+}
+
+.lastTen {
+  display: flex;
+  text-align: left;
+
+  &__ul {
+    //display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: left;
+    margin-left: 1rem;
+    background-color: v.$color-in-body;
+    border: solid 1px #e47967;
+    margin: 0.35rem;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    display: block;
+    width: 100%;
+    color: black;
+    text-shadow: none;
+
+    &__li {
+      display: block;
+      flex-direction: row;
+      margin: 0.35rem;
+      margin-left: 0.8rem;
+      color: black;
+      text-shadow: none;
+
+      &__center {
+        text-align: center;
+        margin: 0.35rem;
+        color: black;
+        text-shadow: none;
+      }
+
+      &__content {
+        border: solid 1px #e47967;
+        border-radius: 0.5rem;
+        background-color: #fff;
+        margin: 0.4rem;
+        padding: 0.7rem;
+        color: black;
+        text-shadow: none;
+      }
+    }
+  }
+
+  &__ul:active {
+    background-color: v.$color-in-body;
+    border: white solid 1px;
+  }
+  &__ul:hover {
+    background-color: v.$color-border;
+    border: white solid 1px;
+  }
+  &__ul :focus {
+    background-color: v.$color-body;
+    border: white solid 1px;
+  }
+}
+
+.cardLastTen {
+  background-color: #fabab0;
+  border-radius: 0.5rem;
+  justify-content: space-around;
+  border: solid 2px #f79884;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 1em;
+  text-align: center;
+  margin: 1rem 0.5rem;
+  text-shadow: 1px 1px 2px white;
+}
+
+.cardLastTen1 {
+  background-color: #a55959;
+  border-radius: 0.5rem;
+  justify-content: space-around;
+  border: solid 2px #f79884;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 1em;
+  text-align: center;
+  margin: 1rem 0.5rem;
+  text-shadow: 1px 1px 2px black;
+  color: #fff;
+}
+
+.cardLastTen2 {
+  background-color: #343047;
+  border-radius: 0.5rem;
+  justify-content: space-around;
+  border: solid 2px #f79884;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 1em;
+  text-align: center;
+  margin: 1rem 0.5rem;
+  text-shadow: 1px 1px 2px black;
+  color: #fff;
+}
+
+.cardLastTen3 {
+  background-color: #7c4241;
+  border-radius: 0.5rem;
+  justify-content: space-around;
+  border: solid 2px #f79884;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 1em;
+  text-align: center;
+  margin: 1rem 0.5rem;
+  text-shadow: 1px 1px 2px black;
+  color: #fff;
+}

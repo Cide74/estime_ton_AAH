@@ -22,7 +22,7 @@ const FormResult = ({ infosimulation }) => {
     <div className="home__body">
       <div className="home__body__title">
       <h2 className="paragraphe__title">
-        Voici ce que vous avez déclaré et le resultat</h2>
+        Voici ce que vous avez déclaré et le résultat</h2>
       {data ? (
         <div>
           <p>le résultat : {infosimulation.status_aah}</p>

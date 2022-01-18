@@ -44,7 +44,7 @@ Puis dans le _package.json_ on ajoute au scripts la commande de pour les tests :
 
 - `cross-env NODE_PATH=./` montre le chemin à executé.
 - `--watch` lance un serveur comme _nodemon_, ce qui évite de lancé la commande de test à chaque fois.
-- `--verbose` retourne plus d'explication lors du resultat du test.
+- `--verbose` retourne plus d'explication lors du résultat du test.
 
 - Toujours dans le package.json, on va configurer `Jest`
 

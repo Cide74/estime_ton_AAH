@@ -1,30 +1,64 @@
-@use 'reset';
+@use "reset";
 @use "vars" as v;
-
+html {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-width: 100%;
+}
 body {
   font-family: v.$global-font;
   font-weight: v.$global-font-weight;
   background-color: v.$color-body;
 }
-
- /*
-button {
-  border-radius: v.$global-border-radius/2;
-  font-size: 1em;
-  font-weight: 400;
-  padding: v.$gutter/2;
-  text-align: center;
-  margin: 0rem 0.8rem 0.8rem 0.8rem;
-  background-color: v.$color-in-body;
+*::-webkit-scrollbar {
+  width: 10px;
 }
+*::-webkit-scrollbar-thumb {
+  background: v.$color-border;
+  border-radius: 20px;
+  border: 2.5px solid #fff;
+}
+*::-webkit-scrollbar-track {
+  background: #fff;
+}
+// modal de confirmation et de validation des messages en retour du back
 
-  // or you can import your own font
-  @font-face {
-    font-family: 'Roboto';
-    src: url('../assets/fonts/Roboto-Regular.ttf');
-  }
-
-  body {
-    font-family: 'Roboto', sans-serif;
-  }
-*/
+.confirm {
+  width: 400px;
+  height: 150px;
+  background-color: v.$color-border;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-shadow: 1px 1px 1px #000;
+  text-align: center;
+}
+// cuseur de l'input
+input {
+  caret-color: blue;
+}
+textarea {
+  caret-color: v.$color-border;
+}
+.title_list_comment {
+  padding: 1rem;
+  font-size: larger;
+  text-decoration: underline;
+}
+// container dans un art/ gb
+.message {
+  width: 100%;
+  border: 1px solid black;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

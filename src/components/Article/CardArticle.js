@@ -26,15 +26,15 @@ const CardArticle = ({ title, content, user, updated_at }) => {
     <section>
       {loadData && (
         <div>
-          <h3 className="cardChiffre__title">{properNoun(title)}</h3>
+          <h3 className="content_card__title">{properNoun(title)}</h3>
           <div className="cardGuestbook__footer">
             <div className="cardGuestbook__footer__in">
               {name(user)}, le {dateTransform({ updated_at })} à{" "}
               {time({ updated_at })}.
             </div>
           </div>
-          <div className="cardChiffre__paragraphe">
-            <p className="cardChiffre__title2-sous-liste">
+          <div className="content_card__paragraphe">
+            <p className="content_card__title2-sous-liste">
               - {properNoun(content)}
             </p>
           </div>

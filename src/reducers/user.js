@@ -1,22 +1,35 @@
 import {
   FIELD_CHANGE,
   REFRESH_STATE,
-  REFRESH_HEADER,
-  ON_LOGOUT
+  CLEAR_INPUT,
+  ON_LOGOUT,
+  REFRESH_ALL_USERS,
+  NEW_USER_REFRESH,
+  LOGIN_ERROR,
+  CLEAR_BACK_VALUE,
 } from "../actions/user";
-
+import { REFRESH_TEN_QUESTION } from "src/actions/question";
+import { REFRESH_TEN_ARTICLE } from "src/actions/article";
+import { REFRESH_TEN_GUESTBOOK } from "src/actions/guestbook";
+import { REFRESH_TEN_COMMENT } from "src/actions/comment";
 const initialState = {
-  pseudoId: 0,
+  id: 0,
   pseudo: "",
-  birthdate: "",
   email: "",
-  pseudoWelcome: "",
   password: "",
   passwordConf: "",
+  role: 0,
   isLogged: false, // Condition si l'utilisateur est loggé true/false
-  nbArticle: Math.round(Math.random() * 10), // En attendant, c'est pour le fun !!
-  checkToken: "", // stockage pour le token,
-  refreshToken: ""
+  accessToken: "", // stockage pour le token
+  refreshToken: "",
+  allUsers: {},
+  userSimulation: {},
+  userArticle: {},
+  userGuestbook: {},
+  userComment: {},
+  CreateUserMessage: "",
+  loginMsg: "",
+  loginMsgError: "",
 };
 
 const user = (state = initialState, action = {}) => {
@@ -24,35 +37,87 @@ const user = (state = initialState, action = {}) => {
     case FIELD_CHANGE:
       return {
         ...state,
-        [action.key]: action.value
+        [action.key]: action.value,
       };
 
-    case REFRESH_STATE: // le login passe ici (saveDataUser)
-      // console.log("refreshState payload =>", action.payload.success);
-      // console.log("refreshState payload =>", action.payload.message);
-
-      localStorage.setItem("pseudo", action.payload.userInfo.pseudo);
-      localStorage.setItem("email", action.payload.userInfo.email);
-      localStorage.setItem("message", action.payload.message);
+    case NEW_USER_REFRESH: {
       return {
         ...state,
-        pseudo: action.payload.userInfo.pseudo,
-        pseudoId: action.payload.userInfo.id,
-        email: action.payload.userInfo.email,
-        checkToken: action.payload.accessToken,
-        refreshToken: action.payload.refreshToken,
-        isLogged: action.payload.success,
-        pseudoWelcome: action.payload.message
+        CreateUserMessage: action.payload.message,
+      };
+    }
+
+    case CLEAR_BACK_VALUE:
+      return {
+        ...state,
+        message: "",
+        success: "",
+        loginMsg: "",
+        loginMsgError: "",
       };
 
-    case REFRESH_HEADER:
+    case REFRESH_STATE:
+      // le login passe ici (saveDataUser)
+      // console.log("refreshState payload =>", action.payload.success);
+      console.log("refreshState payload =>", action.payload);
       return {
-        ...state
+        ...state,
+        id: action.payload.userInfo.id,
+        pseudo: action.payload.userInfo.pseudo,
+        email: action.payload.userInfo.email,
+        role: action.payload.userInfo.role,
+        isLogged: action.payload.success,
+        loginMsg: action.payload.message,
+        //! TODO pour le build, supprimer les tokens
+        accessToken: action.payload.accessToken,
+        refreshToken: action.payload.refreshToken,
+      };
+
+    case LOGIN_ERROR:
+      return {
+        ...state,
+        loginMsgError: action.payload.data.message,
+      };
+
+    case CLEAR_INPUT:
+      return {
+        ...state,
+      };
+
+    case REFRESH_TEN_QUESTION:
+      // console.log("Question / user / payload", action.payload.user);
+      return {
+        ...state,
+        userSimulation: action.payload.user,
+      };
+    case REFRESH_TEN_ARTICLE:
+      // console.log("Article / user / payload", action.payload.user);
+      return {
+        ...state,
+        userArticle: action.payload.user,
+      };
+    case REFRESH_TEN_GUESTBOOK:
+      // console.log("GuestBook / user / payload", action.payload.user);
+      return {
+        ...state,
+        userGuestbook: action.payload.user,
+      };
+    case REFRESH_TEN_COMMENT:
+      // console.log("comment / user / payload", action.payload.user);
+      return {
+        ...state,
+        userComment: action.payload.user,
       };
 
     case ON_LOGOUT:
       return {
-        ...initialState
+        ...initialState,
+      };
+    case REFRESH_ALL_USERS:
+      console.log("refresh all users :", action.payload);
+      return {
+        ...state,
+        allUsers: action.payload,
       };
 
     default:

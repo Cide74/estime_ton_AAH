@@ -1,20 +1,10 @@
 
 import { REFRESH_CHIFFRE } from "src/actions/chiffre";
+import { englishDateTransform } from "../assets/datas/fonction";
 
 const initialState = {
   chiffres : [],
 };
-
-  /**
- * @param {string} englishDate - format de date en anglais yyyy-mm-dd
- * @returns string
- */
-
-function dateTransform(englishDate) {
-  const enDate = englishDate[0].split("-");
-  const [year, month, day] = enDate;
-  return [day, month, year].join("-");
-}
 
 const chiffre = (state = initialState, action = {}) => {
   switch (action.type) {
@@ -22,43 +12,43 @@ const chiffre = (state = initialState, action = {}) => {
 
       const aahMontantValue = Object.values(action.payload[5].data.aahMontant);
       const resAahDate = Object.keys(action.payload[5].data.aahMontant);
-      const aahFrDate = dateTransform(resAahDate);
+      const aahFrDate = englishDateTransform(resAahDate);
 
       const resMajorationPlafondCoupleCoef = Object.values(action.payload[6].data.majorationPlafondCoupleCoef);
       const resMajorationPlafondCoupleDate = Object.keys(action.payload[6].data.majorationPlafondCoupleCoef);
-      const majorationPlafondCoupleFrDate = dateTransform(resMajorationPlafondCoupleDate); 
+      const majorationPlafondCoupleFrDate = englishDateTransform(resMajorationPlafondCoupleDate); 
 
       const resCoefPersonneAChargeCoef = Object.values(action.payload[7].data.coefPersonneACharge);
       const resCoefPersonneAChargeDate = Object.keys(action.payload[7].data.coefPersonneACharge);
-      const coefPersonneAChargeFrDate = dateTransform(resCoefPersonneAChargeDate);  
+      const coefPersonneAChargeFrDate = englishDateTransform(resCoefPersonneAChargeDate);  
 
       const resSmichbMontant = Object.values(action.payload[8].data.smichb);
       const resSmichbDate = Object.keys(action.payload[8].data.smichb);
-      const smichbFrDate = dateTransform(resSmichbDate);   
+      const smichbFrDate = englishDateTransform(resSmichbDate);   
 
       const resSmichbtfNombre = Object.values(action.payload[9].data.smichbtf);
       const resSmichbtfDate = Object.keys(action.payload[9].data.smichbtf);
-      const smichbtfFrDate = dateTransform(resSmichbtfDate);   
+      const smichbtfFrDate = englishDateTransform(resSmichbtfDate);   
 
       const resMvaMontant = Object.values(action.payload[10].data.mva);
       const resMvaDate = Object.keys(action.payload[10].data.mva);
-      const mvaFrDate = dateTransform(resMvaDate);  
+      const mvaFrDate = englishDateTransform(resMvaDate);  
 
       const resAgeMinimalAge = Object.values(action.payload[11].data.ageMinimal);
       const resAgeMinimalDate = Object.keys(action.payload[11].data.ageMinimal);
-      const ageMinimalFrDate = dateTransform(resAgeMinimalDate); 
+      const ageMinimalFrDate = englishDateTransform(resAgeMinimalDate); 
 
       const resAgeRetraiteAge = Object.values(action.payload[12].data.ageRetraite);
       const resAgeRetraiteDate = Object.keys(action.payload[12].data.ageRetraite);
-      const ageRetraiteFrDate = dateTransform(resAgeRetraiteDate);   
+      const ageRetraiteFrDate = englishDateTransform(resAgeRetraiteDate);   
 
       const resTauxInvaliditeTaux = Object.values(action.payload[13].data.tauxInvalidite);
       const resTauxInvaliditeDate = Object.keys(action.payload[13].data.tauxInvalidite);
-      const tauxInvaliditeFrDate = dateTransform(resTauxInvaliditeDate);   
+      const tauxInvaliditeFrDate = englishDateTransform(resTauxInvaliditeDate);   
 
       const resTauxInvaliditeMinimumTaux = Object.values(action.payload[14].data.tauxInvaliditeMinimum);
       const resTauxInvaliditeMinimumDate = Object.keys(action.payload[14].data.tauxInvaliditeMinimum);
-      const tauxInvaliditeMinimumFrDate = dateTransform(resTauxInvaliditeMinimumDate);   
+      const tauxInvaliditeMinimumFrDate = englishDateTransform(resTauxInvaliditeMinimumDate);   
 
       return {
         ...state,

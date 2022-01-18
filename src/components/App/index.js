@@ -1,76 +1,99 @@
 import React, { useEffect } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import PropTypes from "prop-types";
+
 import Calculateur from "src/components/Calculateur";
-import Information from "src/components/Information";
 import Footer from "src/components/Footer";
 import Contact from "src/components/Contact";
 import My404 from "src/components/My404";
-import Formulaire from "src/components/Formulaire";
-import Article from "src/components/Article";
-import Guestbook from "src/components/Guestbook";
-import Source from "src/components/Source";
-import Chiffre from "src/components/Chiffre";
+import Formulaire from "src/containers/Formulaire";
+import Chiffre from "src/containers/Chiffre";
 import About from "src/components/About";
 import Developpeur from "src/components/Developpeur";
-import ScrollIndicator from "src/components/ScrollIndicator";
 import Header from "src/containers/Header";
 import HomePage from "src/containers/HomePage";
 import Signup from "src/containers/Signup";
 import Question from "src/containers/Formulaire/Question";
 import Login from "src/containers/Login";
 import MyPage from "src/containers/MyPage";
-import Sidebar from "src/components/Sidebar";
+import Sidebar from "src/containers/Sidebar";
+import Parametre from "src/containers/Parametre";
+import FormResult from "src/containers/FormResult";
+import Guestbook from "src/containers/Guestbook";
+import GuestbookForm from "src/containers/GuestbookForm";
+import OneGuestbook from "src/containers/OneGuestbook";
+import Article from "src/containers/Article";
+import ArticleForm from "src/containers/ArticleForm";
+import OneArticle from "src/containers/OneArticle";
+import CommentForm from "src/containers/CommentForm";
+import OneComment from "src/containers/OneComment";
 
 import "./styles.scss";
 
 /**
+ *
  * @param {Bool} isLogged - Par défaut à false.
+ * @param {string} pseudo - Pseudo de l'utilisateur.
+ *
  */
-const App = ({ isLogged }) => {
-  console.log("islogged App", isLogged);
+const App = ({ isLogged, pseudo }) => {
   useEffect(() => {
     // Pour arriver en haut de page.
     window.scroll(0, 0);
   }, [location]);
 
+  useEffect(() => {
+    if (pseudo !== "" || typeof pseudo !== "undefined") {
+      // console.log("j'ai le pseudo ", pseudo);
+    }
+    if (isLogged) {
+      console.log("je suis loggé");
+    }
+  }, [isLogged]);
+
   return (
-    <div id="app">
-      <div id="app__sidebar">
+    <div className="app">
+      <div className="app__sidebar">
         <Sidebar />
       </div>
-      <div id="app__body">
+      <div className="app__body">
         <Header />
-      {/** 
-      {!isLogged ? <Redirect to="/login" /> : null} */}
-      <Switch>
-        {/* Placer les routes front ici */}
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/calculateur" component={Calculateur} />
-        <Route exact path="/information" component={Information} />
-        <Route exact path="/article" component={Article} />
-        <Route exact path="/guestbook" component={Guestbook} />
-        <Route exact path="/source" component={Source} />
-        <Route exact path="/chiffre" component={Chiffre} />
-        <Route exact path="/developpeur" component={Developpeur} />
-        <Route exact path="/formulaire" component={Formulaire} />
-        <Route exact path="/form-questions" component={Question} />
-        <Route exact path="/userPage" component={MyPage} />
-        <Route exact path="/Contact" component={Contact} />
-        <Route exact path="/about" component={About} />
-        <Route path="/error404" component={My404} />
-        <Redirect to="/error404" />
-      </Switch>
-      <Footer /></div>
+        {/* <ScrollIndicator /> */}
+        <div className="app__body__center">
+          <Routes>
+            {/* Placer les routes front ici */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/userPage" element={<MyPage />} />
+            <Route path="/formulaire" element={<Formulaire />} />
+            <Route path="/getSimulation/:id" element={<FormResult />} />
+            <Route path="/getGuestbook/:id" element={<OneGuestbook />} />
+            <Route path="/getArticle/:id" element={<OneArticle />} />
+            <Route path="/getComment/:id" element={<OneComment />} />
+            <Route path="/calculateur" element={<Calculateur />} />
+            <Route path="/form-questions" element={<Question />} />
+            <Route path="/form-article" element={<ArticleForm />} />
+            <Route path="/form-guestbook" element={<GuestbookForm />} />
+            <Route path="/form-comment" element={<CommentForm />} />
+            <Route path="/article" element={<Article />} />
+            <Route path="/guestbook" element={<Guestbook />} />
+            <Route path="/chiffre" element={<Chiffre />} />
+            <Route path="/developpeur" element={<Developpeur />} />
+            <Route path="/Contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/onlyAdmin" element={<Parametre />} />
+            <Route path="/error404" element={<My404 />} />
+            <Route path="*" element={<Navigate to="/error404" />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
     </div>
   );
 };
 
 App.proptypes = {
-  isLogged: PropTypes.bool.isRequired
+  isLogged: PropTypes.bool,
 };
 export default App;

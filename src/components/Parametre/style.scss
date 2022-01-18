@@ -10,7 +10,8 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: column;
+    margin: 0 auto;
   }
   &__Content_title {
     display: inline-block;
@@ -23,47 +24,27 @@
     display: inline-block;
     padding: 0.7rem;
   }
-
-  &__Content_Items[class*="user"] {
-    margin: 0.5rem;
-    width: 48%;
-    background: white;
+  &__Content_Items {
+    margin: 0.5rem auto;
+    width: 70%;
     border: 3px solid #000;
     border-radius: 15px;
     box-sizing: border-box;
   }
-
+  &__Content_Items[class*="user"] {
+    background: white;
+  }
   &__Content_Items[class*="form"] {
-    margin: 0.5rem;
-    width: 48%;
     background: rgb(243, 196, 196);
-    border: 3px solid #000;
-    border-radius: 15px;
-    box-sizing: border-box;
   }
   &__Content_Items[class*="art"] {
-    margin: 0.5rem;
-    width: 48%;
     background: rgb(196, 230, 243);
-    border: 3px solid #000;
-    border-radius: 15px;
-    box-sizing: border-box;
   }
   &__Content_Items[class*="gbook"] {
-    margin: 0.5rem;
-    width: 48%;
     background: rgb(219, 245, 170);
-    border: 3px solid #000;
-    border-radius: 15px;
-    box-sizing: border-box;
   }
   &__Content_Items[class*="comment"] {
-    margin: 0.5rem;
-    width: 48%;
     background: rgb(184, 163, 243);
-    border: 3px solid #000;
-    border-radius: 15px;
-    box-sizing: border-box;
   }
 
   &__Content_allItem {
@@ -97,4 +78,13 @@
     display: flex;
     justify-content: space-around;
   }
+}
+.user_Pseudo {
+  color: red;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0.2rem;
+}
+li {
+  line-height: 2;
 }

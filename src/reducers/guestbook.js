@@ -4,18 +4,28 @@ import {
   CHANGE_FIELD_GUESTBOOK,
   CLEAR_GUESTBOOK,
   ALL_GUESTBOOKS,
+  REFRESH_POST_GUESTBOOK,
+  REFRESH_ONE_GUESTBOOK,
+  REFRESH_MODIFY_GUESTBOOK,
+  REFRESH_DEL_GUESTBOOK,
 } from "src/actions/guestbook";
 
 const initialState = {
+  // all gb
   guestbooks: [],
+  //
+  allGuestbooks: {},
+  // confirmation de réception
+  success: false,
+  message: "",
   count: 0,
+  // one GB
   id: 0,
   title: "",
   content: "",
-  user: "",
-  success: "",
-  message: "",
-  allGuestbooks: {},
+  oneUser: "",
+  updated_at: "",
+  oneComments: [],
 };
 
 //console.log(`initialState guestbook`, initialState)
@@ -29,18 +39,47 @@ const guestbook = (state = initialState, action = {}) => {
       };
 
     case REFRESH_GUESTBOOK:
-      console.log("action.payload guestbook ", action.payload);
-      //console.log("action.payload guestbooks.rows ", action.payload.guestbooks.rows);
+      // pour tous les Gb
       return {
         ...state,
-
-        guestbooks: action.payload.guestbooks,
-        ...action.payload,
-        //guestbooks: action.payload.guestbooks.rows,
-        guestbooks: action.payload.rows,
         count: action.payload.count,
+        guestbooks: action.payload.rows,
       };
 
+    case REFRESH_ONE_GUESTBOOK:
+      // console.log(action.payload);
+      return {
+        ...state,
+        id: action.payload.rows[0].id,
+        title: action.payload.rows[0].title,
+        content: action.payload.rows[0].content,
+        oneUser: action.payload.rows[0].user.pseudo,
+        updated_at: action.payload.rows[0].updated_at,
+        oneComments: action.payload.rows[0].comment,
+      };
+    case REFRESH_MODIFY_GUESTBOOK:
+      console.log(action.payload);
+      return {
+        ...state,
+        success: action.payload.success,
+        message: action.payload.message,
+      };
+
+    case REFRESH_POST_GUESTBOOK:
+      console.log("création guestbook article ", action.payload);
+      return {
+        ...state,
+        success: action.payload.success,
+        message: action.payload.message,
+      };
+
+    case REFRESH_DEL_GUESTBOOK: {
+      return {
+        ...state,
+        success: action.payload.success,
+        message: action.payload.message,
+      };
+    }
     case SEND_GUESTBOOK_FORM:
       return {
         ...state,
@@ -59,8 +98,6 @@ const guestbook = (state = initialState, action = {}) => {
       };
 
     default:
-      // console.log(`state du reducer guestbooks =>`, state)
-      //console.log(`state du reducer guestbooks =>`, state.guestbooks)
       return state;
   }
 };

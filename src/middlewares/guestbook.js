@@ -3,6 +3,9 @@ import {
   GET_GUESTBOOK,
   refreshGuestbook,
   allGuestbooks,
+  refreshPostGuestbook,
+  refreshOneGuestbook,
+  refreshModifyGuestbook,
   SEND_GUESTBOOK_FORM,
   GET_ONE_GUESTBOOK,
   DELETE_ONE_GUESTBOOK,
@@ -12,10 +15,9 @@ import {
 
 const guestbook = (store) => (next) => async (action) => {
   const options = { headers: { Authorization: `Bearer ${accessToken}` } };
-
-  const { pseudoId, accessToken } = store.getState().user;
-  // console.log(`pseudoId`, pseudoId)
+  const { id, accessToken } = store.getState().user;
   const { title, content } = store.getState().guestbook;
+
   switch (action.type) {
     case GET_GUESTBOOK: {
       try {
@@ -30,26 +32,11 @@ const guestbook = (store) => (next) => async (action) => {
       break;
     }
 
-    //! en cours
     case GET_ONE_GUESTBOOK: {
       try {
         const getGuestbook = await Api.get(`/guestbook/${action.idGuestbook}`);
-        if (getGuestbook.data.success) {
-          //  console.log("middleware Guestbook ", getGuestbook.data.guestbook);
-          ///   console.log("middleware Guestbook data Détails ", getGuestbook.data);
-          console.log(
-            "middleware Guestbook Détails ",
-            getGuestbook.data.guestbook
-          );
-          // console.log("middleware Guestbook Détails [0] ", getGuestbook.data.guestbook.rows[0]);
-          console.log(
-            "middleware Guestbook Détails comment ",
-            getGuestbook.data.guestbook.rows[0].comment
-          );
 
-          store.dispatch(refreshGuestbook(getGuestbook.data.guestbook));
-          // store.dispatch(refreshGuestbook(getGuestbook.data.guestbook.rows[0])); //! OK
-        }
+        store.dispatch(refreshOneGuestbook(getGuestbook.data.guestbook));
       } catch (error) {
         console.log(error);
       }
@@ -57,26 +44,23 @@ const guestbook = (store) => (next) => async (action) => {
     }
 
     case SEND_GUESTBOOK_FORM: {
-      sessionStorage.clear();
-      localStorage.clear();
       try {
-        const newGuesbook = await Api.post(
-          `/user/${pseudoId}/guestbook`,
+        const createGb = await Api.post(
+          `/user/${id}/guestbook`,
           {
             title,
             content,
-            user_id: pseudoId,
           },
           options
         );
-        sessionStorage.setItem("success", newGuesbook.data.success);
-        sessionStorage.setItem("message", newGuesbook.data.message);
-        store.dispatch(refreshGuestbook(newGuesbook.data));
+        const reponse = refreshPostGuestbook(createGb.data);
+        store.dispatch(reponse);
       } catch (error) {
         console.log(
           "La création d'un message pour le livre d'or à échoué",
-          error
+          error.response
         );
+        console.log(error);
       }
       break;
     }
@@ -85,13 +69,12 @@ const guestbook = (store) => (next) => async (action) => {
       sessionStorage.clear();
       try {
         const delInfo = await Api.delete(
-          `/user/${pseudoId}/guestbook/${action.idGuestbook}`,
+          `/user/${id}/guestbook/${action.idGuestbook}`,
           options
         );
         console.log(delInfo);
-        sessionStorage.setItem("success", delInfo.data.success);
-        sessionStorage.setItem("message", delInfo.data.message);
-        store.dispatch(refreshGuestbook(delInfo.data));
+
+        store.dispatch(refreshDelGuestbook(delInfo.data));
       } catch (error) {
         console.log(error);
       }
@@ -100,18 +83,16 @@ const guestbook = (store) => (next) => async (action) => {
     case MODIFY_ONE_GUESTBOOK: {
       sessionStorage.clear();
       try {
-        const modify = await Api.patch(
-          `/user/${pseudoId}/Guestbook/${action.idGuestbook}`,
+        const modifyGb = await Api.patch(
+          `/user/${id}/Guestbook/${action.idGuestbook}`,
           {
             title,
             content,
           },
           options
         );
-        console.log(modify.data);
-        sessionStorage.setItem("success", modify.data.success);
-        sessionStorage.setItem("message", modify.data.message);
-        store.dispatch(refreshGuestbook(modify.data));
+        console.log(modifyGb.data);
+        store.dispatch(refreshModifyGuestbook(modifyGb.data));
       } catch (error) {
         console.log(error);
       }
@@ -126,6 +107,7 @@ const guestbook = (store) => (next) => async (action) => {
       } catch (error) {
         console.log(error);
       }
+      break;
     }
     default:
       next(action);

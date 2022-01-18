@@ -1,2 +1,104 @@
-.Question__form {
+@use "src/styles/vars" as v;
+
+.Preformulaire {
+  &__paragraphe {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    text-align: justify;
+    line-height: normal;
+    text-indent: 2rem;
+  }
+
+  &__link {
+    color: rgb(63, 62, 62);
+    text-decoration: underline;
+  }
+  &__link:hover {
+    color: blue;
+  }
+  &__link:nth-last-of-type(1) {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  &__liste {
+    text-align: left;
+    margin: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+.fieldset {
+  display: flex;
+  flex: 1;
+}
+
+.form {
+  //display: flex;
+  flex-direction: column;
+  //text-align: center;
+  // flex: 1;
+  &__compo {
+    border-radius: 0.5rem;
+    background-color: v.$color-in-body;
+    border: solid 2px #e47967;
+    display: flex;
+    flex: 1;
+    margin: 0.5rem;
+    width: 70%;
+    display: inline-block;
+
+    &__in {
+      background-color: white;
+      margin: 0.5rem;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      flex: 1;
+      border: solid 1px #e47967;
+      display: flex;
+      flex-direction: column;
+
+      &__question {
+        background-color: white;
+        margin: 0.25rem;
+        padding: 0.5rem;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &__response {
+        flex-direction: row;
+        background-color: v.$color-in-body;
+        border: solid 1px #e47967;
+        margin: 0.5rem;
+        border-radius: 0.5rem;
+        padding: 0.25rem;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0.5rem;
+    font-size: 1.4em;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+input[type="radio"]:checked:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: v.$color-border;
+  content: "";
+  display: inline-block;
+  visibility: visible;
+  border: 3px solid black;
 }

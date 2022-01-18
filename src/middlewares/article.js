@@ -1,10 +1,11 @@
 import Api from "src/API/index";
 
 import {
-  GET_ARTICLE,
   refreshArticle,
   refreshAllArticle,
   allArticles,
+  refreshOneArticle,
+  GET_ARTICLE,
   SEND_ARTICLE_FORM,
   GET_ONE_ARTICLE,
   DELETE_ONE_ARTICLE,
@@ -18,7 +19,7 @@ const article = (store) => (next) => async (action) => {
   const options = { headers: { Authorization: `Bearer ${accessToken}` } };
 
   switch (action.type) {
-    // tout les articles
+    // tous les articles
     case GET_ARTICLE: {
       try {
         const allArticles = await Api.get(`/articles`);
@@ -37,15 +38,14 @@ const article = (store) => (next) => async (action) => {
           `/article/${action.idArticle}`,
           options
         );
-        if (getArticle.data.success) {
-          store.dispatch(refreshArticle(getArticle.data.article.rows[0]));
-        }
+
+        store.dispatch(refreshOneArticle(getArticle.data));
       } catch (error) {
         console.log(error);
       }
       break;
     }
-    // envoye du formulaire d'article
+    // envoi du formulaire d'article
     case SEND_ARTICLE_FORM: {
       sessionStorage.clear();
       localStorage.clear();
@@ -108,7 +108,7 @@ const article = (store) => (next) => async (action) => {
       }
       break;
     }
-    // tout les articles pour Parametre
+    // tous les articles pour Parametre
     case CALL_ALL_ARTICLES: {
       try {
         const allArticle = await Api.get("/articles", options);
