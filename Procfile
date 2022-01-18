@@ -1,1 +1,2 @@
-web: yarn run buid
+
+web: npm run build
