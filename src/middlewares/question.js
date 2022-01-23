@@ -80,8 +80,13 @@ const question = (store) => (next) => async (action) => {
           options
         );
 
-        const reponse = refreshQuestion(simulation.data);
-        store.dispatch(reponse);
+        const simulationForState = {
+          infosimulation: simulation.data.infosimulation[1],
+          message: simulation.data.message,
+          success: simulation.data.success,
+        }
+        const response = refreshQuestion(simulationForState);
+        store.dispatch(response);
       } catch (error) {
         console.log("erreur =>", error);
       }

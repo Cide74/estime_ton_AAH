@@ -28,6 +28,7 @@ const mapStateToProps = (state) => ({
   //message: state.question,
   message: state.question.message,
   success: state.question.success,
+  infosimulation: state.question.infosimulation,
 });
 
 const mapDispatchToProps = (dispatch) => ({

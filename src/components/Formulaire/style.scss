@@ -23,8 +23,8 @@
   }
   &__liste {
     text-align: left;
-    margin: 1rem;
-    font-size: 1.1rem;
+    margin: 0.5rem;
+    font-size: 1rem;
   }
 }
 
@@ -34,10 +34,7 @@
 }
 
 .form {
-  //display: flex;
   flex-direction: column;
-  //text-align: center;
-  // flex: 1;
   &__compo {
     border-radius: 0.5rem;
     background-color: v.$color-in-body;
@@ -80,7 +77,7 @@
 
   &__title {
     margin: 0.5rem;
-    font-size: 1.4em;
+    font-size: 1.1em;
     border-radius: 0.5rem;
     padding: 0.75rem;
     flex: 1;
@@ -101,4 +98,164 @@ input[type="radio"]:checked:after {
   display: inline-block;
   visibility: visible;
   border: 3px solid black;
+}
+
+.content_card {
+    margin: 0.01rem;
+  padding: 0.01rem;
+  &__title {
+  font-size: 1rem;
+  }
+}
+@media screen and ( max-width: 1024px) { 
+.Preformulaire {
+  &__paragraphe {
+    font-size: 1rem;
+    padding: 0.4rem;
+    margin: 0.4rem;
+    text-indent: 1.5rem;
+  }
+
+  &__link {
+    color: rgb(63, 62, 62);
+    text-decoration: underline;
+  }
+  &__link:hover {
+    color: blue;
+  }
+  &__link:nth-last-of-type(1) {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+  &__liste {
+    text-align: left;
+    margin: 0.5rem;
+    font-size: 1rem;
+  }
+}
+
+
+.form {
+  &__compo {
+    border-radius: 0.4rem;
+    margin: 0.4rem;
+    width: 70%;
+    display: inline-block;
+
+    &__in {
+      margin: 0.4rem;
+      border-radius: 0.4rem;
+      padding: 0.4rem;
+
+      &__question {
+        margin: 0.2rem;
+        padding: 0.4rem;
+      }
+
+      &__response {
+        margin: 0.4rem;
+        border-radius: 0.5rem;
+        padding: 0.2rem;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0.4rem;
+    font-size: 1em;
+    padding: 0.5rem;
+
+  }
+
+}
+  .formResult__warning {
+    font-size: 1.2rem;
+
+  }
+
+.content_card {
+  margin: 0.1rem;
+  padding: 0.1rem;
+  &__title {
+  font-size: 0.9rem;
+  margin: 0rem;
+}
+}
+
+}
+@media screen and ( max-width: 600px) { 
+
+.content_card {
+  margin: 0.01rem;
+  padding: 0.01rem;
+  &__title {
+  font-size: 0.9rem;
+  margin: 0rem;
+}
+}
+
+  .Preformulaire {
+  &__paragraphe {
+    font-size: 0.9rem;
+    padding: 0.25rem;
+    margin: 0.25rem;
+    text-indent: 1rem;
+  }
+
+  &__liste {
+    text-align: left;
+    margin: 0.25rem;
+    font-size: 0.8rem;
+  }
+}
+
+.form {
+  &__compo {
+    margin: 0.25rem;
+    width: 70%;
+
+    &__in {
+   
+      margin: 0.25rem;
+      border-radius: 0.25rem;
+      padding: 0.25rem;
+
+      &__question {
+        margin: 0.12rem;
+        padding: 0.25rem;
+      }
+
+      &__response {
+        margin: 0.25rem;
+        border-radius: 0.25rem;
+        padding: 0.12rem;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0.25rem;
+    font-size: 0.9em;
+    border-radius: 0.25rem;
+    padding: 0.45rem;
+  }
+}
+
+input[type="radio"]:checked:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: v.$color-border;
+  content: "";
+  display: inline-block;
+  visibility: visible;
+  border: 3px solid black;
+}
+  .formResult__warning {
+    font-size: 0.9em;
+    text-shadow: none;
+  }
 }

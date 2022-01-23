@@ -51,7 +51,7 @@ textarea {
   caret-color: v.$color-border;
 }
 .title_list_comment {
-  padding: 1rem;
+  padding: 0.5rem;
   font-size: larger;
   text-decoration: underline;
 }
@@ -61,4 +61,11 @@ textarea {
   border: 1px solid black;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+@media screen and ( max-width: 1024px) { 
+
+}
+@media screen and ( max-width: 600px) { 
+  
 }

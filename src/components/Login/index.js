@@ -107,7 +107,7 @@ const Login = ({
   return (
     <div className="home__body">
       <div className="home__body__title">
-        <h2>Connectez-vous pour continuer</h2>
+        <h2 className="body__title">Connectez-vous pour continuer</h2>
         <Box
           component="form"
           onSubmit={handleOnSubmit}

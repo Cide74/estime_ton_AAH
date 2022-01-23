@@ -10,21 +10,10 @@ import {
   dateTransform,
 } from "src/assets/datas/fonction";
 
-const CardGuestbooks = ({ title, content, user, updated_at }) => {
-  const [loadData, setLoadData] = useState(false);
-
-  useEffect(() => {
-    if (!updated_at) {
-      setLoadData(false);
-      return <Loading />;
-    } else {
-      setLoadData(true);
-    }
-  }, [updated_at]);
+const CardGuestbook = ({ title, content, user, updated_at }) => {
 
   return (
     <section>
-      {loadData && (
         <div>
           <h3 className="content_card__title">{properNoun(title)}</h3>
           <div className="cardGuestbook__footer">
@@ -39,9 +28,8 @@ const CardGuestbooks = ({ title, content, user, updated_at }) => {
             </p>
           </div>
         </div>
-      )}
     </section>
   );
 };
 
-export default CardGuestbooks;
+export default CardGuestbook;

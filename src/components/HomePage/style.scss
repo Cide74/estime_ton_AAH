@@ -12,7 +12,7 @@
 
     &__title {
       background-color: white;
-      margin: 1rem;
+      margin: 0.51rem;
       border-radius: 0.5rem;
       padding: 0.75rem;
       flex: 1;
@@ -21,17 +21,15 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      //padding: 2rem 5rem;
-      padding: 1rem;
+      padding: 0.5rem;
     }
   }
 
   &__paragraphe {
-    font-size: 1.2rem;
-    padding: 0.5rem;
+    font-size: 1.1rem;
     margin: 0.5rem;
     text-align: justify;
-    width: 50%;
+    width: 80%;
     text-indent: 2rem;
     line-height: normal;
   }

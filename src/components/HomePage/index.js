@@ -25,7 +25,10 @@ const HomePage = ({ isLogged, pseudo }) => {
   return (
     <div className="home__body">
       <div className="home__body__title">
-        <img src={Logo} alt="logo du site" className="logo" />
+        <img 
+          src={Logo} 
+          alt="Logo du site, c'est une femme dans un fauteuil avec un homme debout, ils tiennent un cœur qui a une blessure. Cette blessure perd de l'argent qui tombe au sol." 
+          className="logo" />
         {isLogged === false || isLogged === undefined ? (
           <div>
             <Link to="/login">
@@ -42,11 +45,11 @@ const HomePage = ({ isLogged, pseudo }) => {
           Bienvenue, {isLogged && <span>{pseudo}</span>}
         </h2>
 
-        <h3 className="home__paragraphe">
+        <p className="home__paragraphe">
           Ce site a pour but de permettre à une personne en situation
           d'invalidité d'estimer son allocation adulte handicapé
           (AAH), en fonction de tous les revenus du foyer.
-        </h3>
+        </p>
         <p>
           A ce jour, le montant de l'AAH du {dateAah} est de {aah}€
         </p>

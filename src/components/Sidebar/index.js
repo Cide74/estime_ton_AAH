@@ -114,7 +114,7 @@ console.log(` onLogout`,  onLogout)
             <div className="sidebar__header__logotext">
               <img
                 src={Logo}
-                alt="Icone pour le retour à l'accueil"
+                alt="Logo du site, c'est une femme dans un fauteuil avec un homme debout, ils tiennent un cœur qui a une blessure. Cette blessure perd de l'argent qui tombe au sol."
                 className="sidebar__header__logo"
               />
             </div>

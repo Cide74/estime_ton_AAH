@@ -10,11 +10,9 @@
 
   &__header{
     &__logo {
-      width: 90%;
+      width: 80%;
       border-radius: v.$gutter/2;
-
       border: v.$color-border solid 0.11em;
-
     }
     &__logotext{
       margin: 0.1rem;
@@ -31,7 +29,7 @@
       text-align: right;
       text-decoration: v.$color-in-body;
       cursor: pointer;
-      margin-right: 1.5rem;
+      margin-right: 1rem;
     }
     &__moment {
       font-size: 1.1rem;
@@ -44,8 +42,8 @@
     background-color: v.$color-in-body;
     margin-top: 0.5rem;
     font-weight: bold;
-    padding: 0.70rem;
-    margin: 0.5rem ;
+    padding: 0.27rem;
+    margin: 0.25rem ;
     border-radius: 0.5rem;
     background-color: v.$color-in-body;
     border: v.$color-border solid 0.11em;
@@ -53,7 +51,6 @@
       font-size: 1.1rem;
       text-align: center;
       font-weight: bold;
-      margin: 0.5rem;
     }
     &__number{
       background-color: white;
@@ -161,11 +158,8 @@
       .pro-inner-item:hover {
         background-color: v.$color-border;
         border-radius: 0.5rem;
-
         margin: 0.20rem;
         border: white solid 2px;
-
-        
       }
     }
   }
@@ -180,4 +174,7 @@
     border: #E47967 solid 3px;
   }
 }
+ li.sidebar__footer__title {
+   line-height: normal;
+ }
 

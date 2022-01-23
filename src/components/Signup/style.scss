@@ -37,3 +37,62 @@
 .css-ekfslj-MuiFormControl-root-MuiTextField-root {
 margin: 2rem;
 }
+
+@media screen and ( max-width: 1024px) { 
+.signup {
+  width: 90%;
+  padding: 0.7rem;
+  margin:  auto;
+  padding: 0.6rem;
+
+  &__legend {
+    margin-bottom: 0.6rem;
+  }
+  &__labels {
+    margin-bottom: 0.6rem;
+  }
+  &__inputs {
+    width: 30%;
+    margin: 0 auto;
+  }
+  &__out-inputs{
+    margin: 0.6rem;
+    padding: 0.3rem;
+
+    &__in{
+      margin-top: 0.6rem;
+    }
+  }
+}
+}
+@media screen and ( max-width: 600px) { 
+  .signup {
+  width: 100%;
+  padding: 0.4rem;
+  margin:  auto;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+
+  &__legend {
+    margin-bottom: 0.3rem;
+  }
+  &__labels {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+  }
+  &__inputs {
+    width: 30%;
+    margin: 0 auto;
+  }
+  &__out-inputs{
+    margin: 0.5rem;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    &__in{
+      margin-top: 0.25rem;
+    }
+  }
+}
+
+}

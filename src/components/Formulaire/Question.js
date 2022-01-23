@@ -33,6 +33,7 @@ const Question = ({
   changeFieldQuestion,
   message,
   success,
+  infosimulation,
 }) => {
   const [consort, setConsort] = useState(false); // en couple = true
   const [child, setChild] = useState(false); // personnes à charge
@@ -117,7 +118,11 @@ const Question = ({
       time = setTimeout(() => {
         setMsg("");
         setIsSubmit(false);
-        navigate("/");
+        if (success) {
+          navigate(`/getSimulation/${infosimulation.id}`);
+        } else {
+          navigate("/");
+        }
       }, 3000);
       setMsg(message);
     }

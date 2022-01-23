@@ -3,7 +3,7 @@
 .paragraphe {
   background-color: v.$color-in-body;
   border-radius: 1rem;
-  padding: 1.5rem;
+  padding: 1rem;
   border: solid 2px v.$color-border;
   display: flex;
   flex-direction: column;
@@ -141,3 +141,150 @@
     -o-transform: scale(1.35); /* Opera */
     transform: scale(1.35);
   }
+
+  @media screen and ( max-width: 1024px) { 
+.paragraphe {
+  border-radius: 0.8rem;
+  padding: 1rem;
+
+  &__border {
+    padding: 0.5rem;
+  }
+
+  &__card {
+    padding: 0.25rem;
+    border-radius: 0.6rem;
+  }
+}
+
+.card {
+  margin: 0.4rem;
+  border-radius: 0.4rem;
+  max-width: 220px;
+  border-radius: 0.4rem;
+  padding: 0.4rem;
+  margin-bottom: 0.8rem;
+  max-width: 230px;
+
+  &__img {
+    max-width: 220px;
+    max-height: 220px;
+    border-radius: 0.5rem 0.5rem 0rem 0rem;
+  }
+
+  &__paragraphe {
+    font-size: 0.8em;
+    padding: 0rem 0rem 0rem 0.5rem;
+    border-radius: 0rem 0rem 1rem 1rem;
+    max-width: 220px;
+    min-height: 45%;
+  }
+
+  &__title {
+    font-size: 1.1rem;
+  }
+
+  &__liste {
+    margin: 0.4em;
+  }
+
+  &__title-sous-liste {
+    margin-top: 0.4em;
+  }
+  &__title2-sous-liste {
+    margin-top: 0.2rem;
+  }
+
+  &__sous-liste {
+    margin-left: 1em;
+  }
+
+}
+}
+
+@media screen and ( max-width: 600px) { 
+  .paragraphe {
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+
+  &__border {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
+
+  &__title {
+    border-radius: 0.5rem;
+    font-size: 1.1em;
+  }
+
+  &__card {
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+  }
+}
+
+.card {
+  margin: 0.3rem;
+  border-radius: 0.5rem;
+  max-width: 200px;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  margin-bottom:0.5rem;
+  max-width: 220px;
+
+  &__img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 0.5rem 0.5rem 0rem 0rem;
+    border: solid 1px #f79884;
+  }
+
+  &__paragraphe {
+    font-size: 0.8em;
+    padding: 0rem 0rem 0rem 0.25rem;
+    background-color: white;
+    border-radius: 0rem 0rem 0.5rem 0.5rem;
+    max-width: 200px;
+    border: solid 1px #f79884;
+  }
+
+  &__title {
+    font-size: 1rem;
+  }
+
+  &__liste {
+    margin: 0.25em;
+  }
+
+  &__title-sous-liste {
+    margin-top: 0.25em;
+  }
+  &__title2-sous-liste {
+    margin-top: 0.25rem;
+  }
+
+  &__sous-liste {
+    margin-left: 1em;
+  }
+
+  &__ico {
+    max-width: 50px;
+    max-height: 50px;
+    margin-top: 0.5rem;
+    border: solid 1px #f79884;
+    border-radius: 2rem;
+  }
+
+}
+
+.smartr{
+    width: 50px;
+    height: 50px;
+    margin-top: 0.5rem;
+    border: solid 1px #f79884;
+    border-radius: 2rem;
+    font-size: 2.5em;
+    background-color: #088475;
+}
+
+}

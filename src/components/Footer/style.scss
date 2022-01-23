@@ -9,19 +9,18 @@
   justify-content: center;
 
   &__nav {
-    margin: 0.5rem;
+    margin: 0.25rem;
   }
 
   &__ul {
     display: flex;
     flex-direction: row;
-    margin-bottom: 2px;
   }
 
   &__li {
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
     font-weight: bold;
-    padding: 0.7rem;
+    padding: 0.3rem;
     margin: 0.25rem;
     border-radius: 0.5rem;
     background-color: v.$color-in-body;
@@ -37,4 +36,34 @@
     background-color: v.$color-border;
     border: white solid 2px;
   }
+}
+
+@media screen and ( max-width: 1024px) { 
+.footer {
+
+  &__nav {
+    margin: 0.2rem;
+  }
+  &__li {
+    margin-top: 0.20rem;
+    font-weight: bold;
+    padding: 0.20rem;
+    margin: 0.2rem;
+  }
+}
+}
+@media screen and ( max-width: 600px) { 
+.footer {
+
+  &__nav {
+    margin: 0.12rem;
+  }
+
+  &__li {
+    margin-top: 0.12rem;
+    padding: 0.15rem;
+    margin: 0.12rem;
+    font-size: 0.7rem;
+  }
+}
 }

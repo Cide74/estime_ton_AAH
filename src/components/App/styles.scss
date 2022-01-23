@@ -32,7 +32,7 @@ button {
   font-size: 1.1em;
   font-weight: 500;
   padding: v.$gutter/2;
-  margin: 1rem;
+  margin: 0.5rem;
   background-color: v.$color-in-body;
   border: #e47967 solid 2px;
 }
@@ -52,4 +52,182 @@ button:hover {
 button :focus {
   background-color: v.$color-body;
   border: white solid 2px;
+}
+
+
+@media screen and ( max-width: 1024px) { 
+
+  .logo {
+    width: 50%;
+  }
+  .home{
+  &__body {
+    &__title {
+      margin: 0.51rem;
+      border-radius: 0.25rem;
+      padding: 0.30rem;
+      padding: 0.25rem;
+      font-size: 1em;
+    }
+  }
+
+  &__paragraphe {
+    font-size: 0.8rem;
+    margin: 0.5rem;
+    width: 80%;
+    text-indent: 0.9rem;
+  }
+}
+}
+
+@media screen and (max-width: 600px) { 
+
+  .home{
+    &__body {
+      &__title {
+        margin: 0.51rem;
+        border-radius: 0.25rem;
+        padding: 0.30rem;
+        padding: 0.25rem;
+        font-size: 0.9em;
+      }
+    }
+
+  &__paragraphe {
+    font-size: 0.75rem;
+    margin: 0.25rem;
+    //width: 80%;
+    text-indent: 1rem;
+  }
+
+}
+.logo {
+  width: 90%;
+  height: 90%;
+}
+
+.header {
+  display: flex;
+	flex-direction: column;
+
+  &__div {
+    &__title {
+      font-size: 1.5em;
+    }
+  }
+}
+
+.sidebar{
+  max-width: 135px;
+  min-height: 100vh;
+
+  &__header{
+    &__logo {
+      width: 80%;
+    }
+    &__logotext{
+      margin: 0.1rem;
+      margin-top: 0.25rem ;
+    }
+    &__closemenu{
+      margin: auto;
+      line-height: 20px;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-right: 0.5rem;
+    }
+    &__moment {
+      font-size: 0.8rem;
+    }
+  }
+
+  &__footer{
+    margin-top: 0.2rem;
+    padding: 0.1rem;
+    margin: 0.1rem ;
+    &__title{
+      font-size: 0.7rem;
+    }
+    &__number{
+      font-size: 1rem;
+      padding: 0.10rem;
+    }
+  }
+
+  .pro-sidebar.collapsed {
+    width: 50px;
+    min-width: 50px;
+  }
+
+  .pro-sidebar-inner .pro-sidebar-layout {
+    ul {
+      font-size: 0.8rem;
+
+
+      .pro-inner-item {
+        margin-top: 0.13rem;
+        padding: 0.13rem;
+        margin: 0.10rem ;
+
+        .pro-icon-wrapper {
+          margin-right: 0.12rem;
+          padding:0.1rem 0.15rem;
+        }
+
+        .pro-item-content {
+          padding: 0rem;
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+
+  .collapsed .pro-sidebar-inner .pro-sidebar-layout {
+    .pro-sidebar-footer{
+      display: none;
+    }
+  }
+
+  .collapsed .pro-sidebar-inner .pro-sidebar-layout {
+
+    .pro-sidebar-header .sidebar__header__moment{
+      display: none;
+    }
+
+    ul {
+      .pro-inner-item {
+        padding-top: 1rem;
+
+        .pro-icon-wrapper {
+          margin: 0.25rem;
+        }
+        .pro-item-content {
+          display: none;
+        }
+      }
+    }
+  }
+  .pro-sidebar-inner .pro-sidebar-layout {
+    ul {
+      .pro-inner-item:focus:hover:active {
+        background-color: v.$color-border;
+        border: white solid 5px;
+      }
+      .pro-inner-item:hover {
+        margin: 0.10rem;
+        
+      }
+    }
+  }
+  
+  button {
+    font-size:0.8em;
+    font-weight: 400;
+    margin: 0rem 0.4rem 0.4rem 0.4rem;
+  }
+}
+
+
 }

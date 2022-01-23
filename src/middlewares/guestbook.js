@@ -2,7 +2,7 @@ import Api from "src/API/index";
 import {
   GET_GUESTBOOK,
   refreshGuestbook,
-  allGuestbooks,
+  getAllGuestbooks,
   refreshPostGuestbook,
   refreshOneGuestbook,
   refreshModifyGuestbook,
@@ -101,9 +101,9 @@ const guestbook = (store) => (next) => async (action) => {
     case CALL_ALL_GUESTBOOKS: {
       try {
         const allGB = await Api.get("/guestbooks", options);
-        const reponse = allGuestbooks(allGB.data);
-        console.log(reponse);
-        store.dispatch(reponse);
+        const response = getAllGuestbooks(allGB.data);
+        console.log(response);
+        store.dispatch(response);
       } catch (error) {
         console.log(error);
       }

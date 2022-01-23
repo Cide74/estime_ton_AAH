@@ -65,3 +65,69 @@
   text-shadow: 1px 1px 1px #000;
   text-align: center;
 }
+
+@media screen and ( max-width: 1024px) { 
+
+.body {
+  border-radius: 0.7rem;
+  display: flex;
+	flex-direction: column;
+
+  &__title {
+    font-size: 1.2rem;
+  }
+
+  &__in {
+    margin: 1.5rem;
+    padding: 1rem;
+
+    &__card {
+      margin: 0.6rem;
+      padding: 1rem;
+    }
+  }
+}
+
+}
+@media screen and ( max-width: 600px) { 
+
+.body {
+
+  border-radius: 0.12rem;
+    &__title {
+    font-size: 0.9rem;
+  }
+
+  &__in {
+    margin: 0.5rem;
+    border-radius: 0.25rem;
+    padding: 0.8rem;
+
+    &__card {
+      margin: 0.2rem;
+      padding: 0.4rem;
+    }
+  }
+}
+
+.MuiBox-root {
+  display: flex;
+  flex-direction: column;
+}
+
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+  background-color: white;
+}
+
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+  background-color: white;
+}
+
+.confirm2 {
+  font-size: 0.8rem;
+}
+.MuiOutlinedInput-input {
+  font-size: 0.7rem;
+  margin: 0.20rem;
+}
+}

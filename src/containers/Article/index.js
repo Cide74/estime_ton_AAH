@@ -4,7 +4,6 @@ import { getArticle, getOneArticle } from "src/actions/article";
 
 const mapStateToProps = state => ({
   articles: state.article.allArticles,
-  count: state.article.count,
   pseudo: state.user.pseudo,
   authors: state.article.authors
 });
