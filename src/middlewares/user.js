@@ -91,7 +91,7 @@ const user = (store) => (next) => async (action) => {
     // pour administateur
     case CALL_ALL_USERS: {
       try {
-        const getAllUsers = await Api.get("/users", options);
+        const getAllUsers = await Api.get("/adminusers", options);
         const response = allUsers(getAllUsers.data);
         store.dispatch(response);
       } catch (error) {
