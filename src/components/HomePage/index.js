@@ -50,8 +50,8 @@ const HomePage = ({ isLogged, pseudo }) => {
           d'invalidité d'estimer son allocation adulte handicapé
           (AAH), en fonction de tous les revenus du foyer.
         </p>
-        <p>
-          A ce jour, le montant de l'AAH depuis le {dateAah} est de {aah.toFixed(2)} €
+        <p className="home__paragraphe">
+          A ce jour, le montant de l'AAH depuis le {dateAah} est de {aah.toFixed(2)} €.
         </p>
         {isLogged === false || isLogged === undefined ? (
           <Link to="/login">
