@@ -51,7 +51,7 @@ const HomePage = ({ isLogged, pseudo }) => {
           (AAH), en fonction de tous les revenus du foyer.
         </p>
         <p>
-          A ce jour, le montant de l'AAH du {dateAah} est de {aah}€
+          A ce jour, le montant de l'AAH depuis le {dateAah} est de {aah.toFixed(2)} €
         </p>
         {isLogged === false || isLogged === undefined ? (
           <Link to="/login">

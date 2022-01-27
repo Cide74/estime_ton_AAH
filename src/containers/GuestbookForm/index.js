@@ -4,6 +4,7 @@ import {
   changeFieldGuestbook,
   sendGuestbookForm,
   clearGuestbook,
+  getGuestbook,
 } from "src/actions/guestbook";
 
 const mapStateToProps = (state) => ({
@@ -24,6 +25,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   clearGuestbook: () => {
     const action = clearGuestbook();
+    dispatch(action);
+  },
+  getGuestbook: () => {
+    const action = getGuestbook();
     dispatch(action);
   },
   getGuestbook: () => {

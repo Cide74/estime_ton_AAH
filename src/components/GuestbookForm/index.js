@@ -26,6 +26,7 @@ const GuestbookForm = ({
   clearGuestbook,
   success,
   message,
+  getGuestbook,
 }) => {
   const [isValue, setIsValue] = useState(false);
 
@@ -51,6 +52,7 @@ const GuestbookForm = ({
         setIsValue(false);
         clearGuestbook();
         navigate("/");
+        //navigate("/guestbook");
       }, 3000);
     }
     return () => clearTimeout(time);
@@ -100,7 +102,7 @@ const GuestbookForm = ({
                   placeholder="Le contenu de votre message sur le livre d'or"
                 />
               </div>
-              <button type="submit">Envoyer</button>
+              <button type="submit" onClick={getGuestbook} >Envoyer</button>
               {success && isValue ? (
                 <div className="confirm">
                   {" "}
