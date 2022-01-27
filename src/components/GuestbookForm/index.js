@@ -84,7 +84,7 @@ const GuestbookForm = ({
                   id="title"
                   onChange={handleInputChange}
                   sx={{ m: 1, width: "25ch" }}
-                  helperText="Le titre de l'article du Guestbook"
+                  helperText="Le titre de votre message"
                 />
               </div>
               <div>
@@ -97,7 +97,7 @@ const GuestbookForm = ({
                   maxRows={10}
                   onChange={handleInputChange}
                   style={{ width: 570, height: 320 }}
-                  placeholder="Le contenu de l'article du Guestbook"
+                  placeholder="Le contenu de votre message sur le livre d'or"
                 />
               </div>
               <button type="submit">Envoyer</button>
