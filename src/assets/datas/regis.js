@@ -13,12 +13,12 @@ const Regis = {
     "Lead dev back",
     "Dev front",
     "Lead Deployment",
-    "Git master"
+    "Git master",
   ],
   teckBack: ["Sequelize", "JsonWebToken"],
   teckFront: ["React", "Redux", "SCSS"],
   realisation: ["Le calculateur AAH (back-end)", "UX / UI"],
   bdd: ["PostgreSQL"],
-  deploy: ["Heroku", "ElephantSQL"]
+  deploy: ["Heroku", "ElephantSQL","Netlify"]
 };
 export default Regis;
