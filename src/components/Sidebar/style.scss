@@ -13,6 +13,8 @@
       width: 80%;
       border-radius: v.$gutter/2;
       border: v.$color-border solid 0.11em;
+      width: 100%;
+      height: auto;
     }
     &__logotext{
       margin: 0.1rem;
