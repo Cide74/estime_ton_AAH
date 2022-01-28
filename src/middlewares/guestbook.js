@@ -35,7 +35,6 @@ const guestbook = (store) => (next) => async (action) => {
     case GET_ONE_GUESTBOOK: {
       try {
         const getGuestbook = await Api.get(`/guestbook/${action.idGuestbook}`);
-
         store.dispatch(refreshOneGuestbook(getGuestbook.data.guestbook));
       } catch (error) {
         console.log(error);

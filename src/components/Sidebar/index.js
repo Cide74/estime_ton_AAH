@@ -13,7 +13,7 @@ import {
 } from "react-pro-sidebar";
 
 //import picture
-import Logo from "src/assets/Logo.png";
+import Logo from "src/assets/Logo.jpg";
 import { FaCalculator } from "react-icons/fa";
 import {
   FiHome,

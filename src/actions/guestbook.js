@@ -4,6 +4,7 @@ export const REFRESH_TEN_GUESTBOOK = "REFRESH_TEN_GUESTBOOK";
 export const CHANGE_FIELD_GUESTBOOK = "CHANGE_FIELD_GUESTBOOK";
 export const SEND_GUESTBOOK_FORM = "SEND_GUESTBOOK_FORM";
 export const GET_ONE_GUESTBOOK = "GET_ONE_GUESTBOOK";
+export const GET_ALL_GUESTBOOK = "GET_ALL_GUESTBOOK";
 export const DELETE_ONE_GUESTBOOK = "DELETE_ONE_GUESTBOOK";
 export const MODIFY_ONE_GUESTBOOK = "MODIFY_ONE_GUESTBOOK";
 export const CLEAR_GUESTBOOK = "CLEAR_GUESTBOOK";
@@ -77,5 +78,9 @@ export const allGuestbooks = (payload) => ({
 });
 export const refreshOneGuestbook = (payload) => ({
   type: REFRESH_ONE_GUESTBOOK,
+  payload,
+});
+export const getAllGuestbook = (payload) => ({
+  type: GET_ALL_GUESTBOOK,
   payload,
 });

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Api from "src/API/index";
 import { goodDateFormat } from "src/assets/datas/fonction";
-import Logo from "src/assets/Logo.png";
+import Logo from "src/assets/Logo.jpg";
 import Proptypes from "prop-types";
 
 import "./style.scss";
