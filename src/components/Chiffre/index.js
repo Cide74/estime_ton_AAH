@@ -79,6 +79,9 @@ const Chiffre = ({
         <div className="content_card">
           <h3 className="content_card__title">Les chiffres officiels</h3>
           <div className="content_card__paragraphe">
+            <p className="home__paragraphe">
+              Voici tous les chiffres que nous avons besoin pour faire l'estimation de l'Allocation Adulte Handicapé.
+            </p>
             <ul className="content_card__liste">
               <li className="content_card__title2-sous-liste">
                 - Le montant du {resSmichbDescription} depuis le {resSmichbDate}{" "}
