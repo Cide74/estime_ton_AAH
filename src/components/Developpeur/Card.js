@@ -66,7 +66,10 @@ const Card = ({ perso, img }) => {
                       return <li key={bdd}>- {bdd}</li>;
                     })}
                 </ul>
-
+              </div>
+            )}
+            {perso.deploy.length > 0 && (
+              <div>
                 <li className="card__title2-sous-liste">Déploiements :</li>
                 <ul>
                   {perso.deploy &&

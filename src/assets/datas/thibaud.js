@@ -13,7 +13,10 @@ const Thibaud = {
   ],
   teckBack: ["Nodejs"],
   teckFront: ["React", "Redux", "SCSS"],
-  realisation: ["Correction de bugs", "Réorganisation du code"],
+  realisation: [
+    "Correction de bugs", 
+    "Réorganisation du code"],
   bdd: ["PostgreSQL"],
+  deploy: []
 };
 export default Thibaud;
