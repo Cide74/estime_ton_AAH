@@ -53,6 +53,9 @@ const HomePage = ({ isLogged, pseudo }) => {
         <p className="home__paragraphe">
           A ce jour, le montant de l'AAH depuis le {dateAah} est de {aah.toFixed(2)} €.
         </p>
+        <p className="home__paragraphe__note">
+          Intégration du nouvel abattement 2022 de 5 000 € pour le conjoint et 1 400 € par enfant.
+        </p>
         {isLogged === false || isLogged === undefined ? (
           <Link to="/login">
             <button type="submit">
