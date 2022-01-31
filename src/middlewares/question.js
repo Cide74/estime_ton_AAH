@@ -43,6 +43,8 @@ const question = (store) => (next) => async (action) => {
   const { id, accessToken } = store.getState().user;
   const options = { headers: { Authorization: `Bearer ${accessToken}` } };
 
+  console.log('apl', apl);
+
   switch (action.type) {
     case ON_SUBMIT_QUESTION: {
       try {
