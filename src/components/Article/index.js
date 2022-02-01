@@ -10,8 +10,6 @@ import TablePagination from "@mui/material/TablePagination";
 /**
  *
  * @param {array} articles - Liste de tous les articles
-
-
  * @param {string} pseudo - pseudo de l'utilisateur
  * @param {function} getOneArticle - Déclencheur pour récupérer l'id de l'article et de l'auteur
  * @returns jsx component

@@ -51,6 +51,13 @@ const App = ({ isLogged, pseudo }) => {
     }
   }, [isLogged]);
 
+  //<meta name="google-site-verification" content="Nxk3k9CrBVjTx1rVpe9mk7PZuOkvRm4bBgl0LY-U280" />
+
+  const meta ={
+    name : "google-site-verification",
+    content : "Nxk3k9CrBVjTx1rVpe9mk7PZuOkvRm4bBgl0LY-U280"
+  }
+
   return (
     <div className="app">
       <div className="app__sidebar">
