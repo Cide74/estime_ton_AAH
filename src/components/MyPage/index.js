@@ -114,27 +114,17 @@ const MyPage = ({
           <li className="form__compo__in__response">{inFrance}</li>
           <li className="form__compo__in__response">{myRole(role)}</li>
         </ul>
+
+        {role === 3 && (
         <div className="form__compo">
           <div className="form__compo__in">
-            <Link to="/formulaire" className="myPage__option">
-              <button>Faire une simulation !</button>
-            </Link>
-
-            <Link to="/form-article" className="myPage__option">
-              <button>Rédiger un article !</button>
-            </Link>
-
-            <Link to="/form-guestbook" className="myPage__option">
-              <button>Ecrire un message dans le livre d'or !</button>
-            </Link>
-
-            {role === 3 && (
               <Link to="/onlyAdmin" className="myPage__option">
                 <button>Paramètres </button>
               </Link>
-            )}
           </div>
         </div>
+        )}
+        
         <article>
           {mySimulation ? (
             <div className="cardLastTen">
@@ -150,6 +140,7 @@ const MyPage = ({
           ) : (
             <Loading />
           )}
+          {/** 
 
           {myArticle ? (
             <div className="cardLastTen1">
@@ -190,8 +181,13 @@ const MyPage = ({
             </div>
           ) : (
             <Loading />
-          )}
+          )}*/}
         </article>
+
+            <Link to="/formulaire" className="myPage__option">
+              <button>Faire une simulation !</button>
+            </Link>
+
       </div>
     </div>
   );

@@ -153,16 +153,16 @@ console.log(` onLogout`,  onLogout)
             )}
             <NavLink end to="/formulaire">
               <MenuItem icon={<FaCalculator />}>Estime ton AAH</MenuItem>
-            </NavLink>
+            </NavLink> 
             <NavLink to="/article">
-              <MenuItem icon={<GrArticle />} onClick={getArticle}>
+             {/**  <MenuItem icon={<GrArticle />} onClick={getArticle}>
                 Les articles
-              </MenuItem>
+              </MenuItem>*/}
             </NavLink>
-            <NavLink end to="/guestbook">
+            <NavLink end to="/guestbook"> {/** 
               <MenuItem icon={<RiArticleLine />} onClick={getGuestbook}>
                 Le livre d'or
-              </MenuItem>
+              </MenuItem>*/}
             </NavLink>
             <NavLink end to="/chiffre">
               <MenuItem icon={<RiNumbersLine />} onClick={getChiffre}>

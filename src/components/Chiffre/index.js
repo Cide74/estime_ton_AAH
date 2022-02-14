@@ -58,6 +58,7 @@ const Chiffre = ({
           <h3 className="content_card__title">Les chiffres du site</h3>
           <div className="content_card__paragraphe">
             <ul className="content_card__liste">
+              {/** 
               <li className="content_card__title2-sous-liste">
                 - {resNbArticles}
               </li>
@@ -66,7 +67,7 @@ const Chiffre = ({
               </li>
               <li className="content_card__title2-sous-liste">
                 - {resNbComments}
-              </li>
+              </li>*/}
               <li className="content_card__title2-sous-liste">
                 - {resNbUsers}
               </li>
