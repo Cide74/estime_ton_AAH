@@ -103,7 +103,7 @@ const LastTen = ({ title, myTabs, idOneElement, element }) => {
                   </ul>
                 </Link>
 
-                <p>{goodDateFormat(e.created_at)}</p>
+              {/**   <p>{goodDateFormat(e.created_at)}</p>*/}
               </div>
             );
           })}
