@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Api from "src/API/index";
 import { goodDateFormat } from "src/assets/datas/fonction";
 import Logo from "src/assets/Logo.jpg";
+import site from "src/assets/Site Maintenace.jpg";
 import Proptypes from "prop-types";
 
 import "./style.scss";
@@ -44,6 +45,11 @@ const HomePage = ({ isLogged, pseudo }) => {
         <h2 className="home__title">
           Bienvenue, {isLogged && <span>{pseudo}</span>}
         </h2>
+
+        <img 
+          src={site} 
+          alt="site en construction" 
+          className="logo" />
 
         <p className="home__paragraphe">
           Ce site a pour but de permettre à une personne en situation
